@@ -21,7 +21,7 @@ This template also contains a sample configuration for Transifex managed transla
 
 For more informations, see the [translator's documentation](http://wiki.dolibarr.org/index.php/Translator_documentation).
 
-The Transifex project for this module is available at http://transifex.com/projects/p/dolibarr-module-template
+The Transifex project for this module is available at <http://transifex.com/projects/p/dolibarr-module-template>
 
 Install
 -------
@@ -62,7 +62,7 @@ Install
 
 - Clone the repository in ```$dolibarr_main_document_root_alt/mymodule```
 
-*(You may have to create the custom directory first if it doesn't exist yet.)*
+*(You may have to create the ```htdocs/custom``` directory first if it doesn't exist yet.)*
 ```sh
 git clone git@github.com:GPCsolutions/dolibarr-module-template.git mymodule
 ```
@@ -82,12 +82,14 @@ git clone git@github.com:GPCsolutions/dolibarr-module-template.git mymodule
 Contributions
 -------------
 
-Feel free to contribute and report defects at <http://github.com/rdoursenaud/dolibarr-module-template>
+Feel free to contribute and report defects at <http://github.com/GPCsolutions/dolibarr-module-template/issues>
 
 Licenses
 --------
 
 ### Main code
+
+![GPLv3 logo](dev/img/gplv3-127x51.png)
 
 GPLv3 or (at your option) any later version.
 
@@ -95,4 +97,18 @@ See [COPYING](COPYING) for more information.
 
 ### Other Licenses
 
-Uses [Parsedown](http://parsedown.org/) licensed under MIT to display this README in the module's about page.
+#### [Parsedown](http://parsedown.org/)
+
+Used to display this README in the module's about page.
+Licensed under MIT.
+
+#### [GNU Licenses logos](https://www.gnu.org/graphics/license-logos.html)
+
+Public domain
+
+
+#### Documentation
+
+All texts and readmes.
+
+![GFDL logo](dev/img/gfdl-129x44.png)
