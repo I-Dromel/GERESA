@@ -1,18 +1,17 @@
 {
-    "name": "rdoursenaud/mymodule",
+    "name": "gpcsolutions/mymodule",
     "type": "dolibarr-module",
     "description": "A Dolibarr module template",
     "keywords": ["dolibarr","template"],
-    "homepage": "https://github.com/rdoursenaud/dolibarr-module-template",
+    "homepage": "https://github.com/gpcsolutions/dolibarr-module-template",
     "license": "GPL-3.0+",
     "support": {
-        "issues": "https://github.com/rdoursenaud/dolibarr-module-template/issues"
+        "issues": "https://github.com/gpcsolutions/dolibarr-module-template/issues"
     },
     "require-dev": {
-        "php": ">=5.3.0",
-        "dolibarr/dolibarr": "dev-develop"
+        "php": ">=5.3.0"
     },
     "require": {
-        "erusev/parsedown": "*"
+        "erusev/parsedown": "^1"
     }
 }
