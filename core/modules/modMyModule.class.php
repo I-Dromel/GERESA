@@ -482,6 +482,19 @@ class modMyModule extends DolibarrModules
 	}
 
 	/**
+	 * Create tables, keys and data required by module
+	 * Files llx_table1.sql, llx_table1.key.sql llx_data.sql with create table, create keys
+	 * and create data commands must be stored in directory /mymodule/sql/
+	 * This function is called by this->init
+	 *
+	 * 	@return		int		<=0 if KO, >0 if OK
+	 */
+	private function loadTables()
+	{
+		return $this->_load_tables('/mymodule/sql/');
+	}
+
+	/**
 	 * Function called when module is disabled.
 	 * Remove from database constants, boxes and permissions from Dolibarr database.
 	 * Data directories are not deleted
@@ -494,18 +507,5 @@ class modMyModule extends DolibarrModules
 		$sql = array();
 
 		return $this->_remove($sql, $options);
-	}
-
-	/**
-	 * Create tables, keys and data required by module
-	 * Files llx_table1.sql, llx_table1.key.sql llx_data.sql with create table, create keys
-	 * and create data commands must be stored in directory /mymodule/sql/
-	 * This function is called by this->init
-	 *
-	 * 	@return		int		<=0 if KO, >0 if OK
-	 */
-	private function loadTables()
-	{
-		return $this->_load_tables('/mymodule/sql/');
 	}
 }
