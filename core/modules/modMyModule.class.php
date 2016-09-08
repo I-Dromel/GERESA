@@ -57,6 +57,16 @@ class modMyModule extends DolibarrModules
 		// Family can be 'crm','financial','hr','projects','products','ecm','technic','other'
 		// It is used to group modules in module setup page
 		$this->family = "other";
+		// Module position in the family
+		$this->module_position = 500;
+		// Gives the possibility to the module, to provide his own family info and position of this family
+		// (Overwrite $this->family and $this->module_position. Avoid this)
+		//$this->familyinfo = array(
+		//	'myownfamily' => array(
+		//		'position' => '001',
+		//		'label' => $langs->trans("MyOwnFamily")
+		//	)
+		//);
 		// Module label (no space allowed)
 		// used if translation string 'ModuleXXXName' not found
 		// (where XXX is value of numeric property 'numero' of module)
@@ -65,14 +75,14 @@ class modMyModule extends DolibarrModules
 		// used if translation string 'ModuleXXXDesc' not found
 		// (where XXX is value of numeric property 'numero' of module)
 		$this->description = "Description of module MyModule";
+		$this->descriptionlong = "A very long description. Can be a full HTML content";
+		$this->editor_name = 'My Company';
+		$this->editor_url = 'http://www.example.com';
 		// Possible values for version are: 'development', 'experimental' or version
 		$this->version = 'development';
 		// Key used in llx_const table to save module status enabled/disabled
 		// (where MYMODULE is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
-		// Where to store the module in setup page
-		// (0=common,1=interface,2=others,3=very specific)
-		$this->special = 3;
 		// Name of image file used for this module.
 		// If file is in theme/yourtheme/img directory under name object_pictovalue.png
 		// use this->picto='pictovalue'
@@ -257,6 +267,35 @@ class modMyModule extends DolibarrModules
 				'enabledbydefaulton' => 'Home'
 			)
 		);
+
+		// Cronjobs
+		// List of cron jobs entries to add
+		$this->cronjobs = array();
+		// Example:
+		//		$this->cronjobs = array(
+		//			0 => array(
+		//				'label' => 'My label',
+		//				'jobtype' => 'method',
+		//				'class' => '/dir/class/file.class.php',
+		//				'objectname' => 'MyClass',
+		//				'method' => 'myMethod',
+		//				'parameters' => '',
+		//				'comment' => 'Comment',
+		//				'frequency' => 2,
+		//				'unitfrequency' => 3600,
+		//				'test' => true
+		//			),
+		//			1 => array(
+		//				'label' => 'My label',
+		//				'jobtype' => 'command',
+		//				'command' => '',
+		//				'parameters' => '',
+		//				'comment' => 'Comment',
+		//				'frequency' => 1,
+		//				'unitfrequency' => 3600 * 24,
+		//				'test' => true
+		//			)
+		//		);
 
 		// Permissions
 		$this->rights = array(); // Permission array used by this module
