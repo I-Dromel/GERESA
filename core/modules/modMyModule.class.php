@@ -133,12 +133,12 @@ class modMyModule extends DolibarrModules
 		// Dependencies
 		// A condition to hide module
 		$this->hidden = false;
-		// List of modules class name as string that must be enabled if this module is enabled
+		// List of module class names as string that must be enabled if this module is enabled
 		// Example : $this->depends('modAnotherModule', 'modYetAnotherModule')
 		$this->depends = array();
-		// List of modules id to disable if this one is disabled
+		// List of module ids to disable if this one is disabled
 		$this->requiredby = array();
-		// List of modules id this module is in conflict with
+		// List of module class names as string this module is in conflict with
 		$this->conflictwith = array();
 		// Minimum version of PHP required by module
 		$this->phpmin = array(5, 3);
