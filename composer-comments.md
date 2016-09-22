@@ -68,6 +68,9 @@ PHPunit tests.
 ### TODO: test_functional
 Selenium tests.
 
+### TODO: dev_doc
+Builds Doxygen developer documentation.
+
 ### release
 Release a module.
 Runs all checks and tests, remove dev dependencies, builds a zip ready to be published and restores dev dependencies.

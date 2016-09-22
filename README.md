@@ -104,16 +104,72 @@ From your browser:
   - The module is under one of the tabs
   - You should now be able to enable the new module and start coding ;)
 
-## Provided tools
+Provided tools
+--------------
+
+### Starting a new module
+
+A [script](dev/newmodule.sh) allows you to rename most of the code to your own module name.  
+It requires ```find```, ```sed``` and ```rename``` commands on your system.  
+Just make sure you provide a CamelCase name.
+```sh
+./dev/newmodule.sh [NewName]
+```
+
+Some work has still to be done manually:
+- Rename the directory holding the code
+- Maybe rename some other bits (Search for 'my' in filenames and code)
+- Update your module ID in the module descriptor
+- Update your language files
+    - Keywords based on the module ID
+    - String referencing the template
+- Remove the features you don't plan to use
+- Fill the copyright notices at the top of each file
+- Build an awesome module ;)
+
+### Composer scripts
+
+Only the main commands are listed here.  
+See the [composer comments](composer-comments.md) or the [composer.json](composer.json) itself for more informations.
+
+#### Check
+
+Runs a linter, a PHP compatibility version checker and checks coding style.
+```sh
+composer check
+```
+
+#### Test (TODO)
+
+Does nothing at the moment.  
+Will run unit and functional tests.
+```sh
+composer test
+```
+
+#### Release
+
+Runs the checks and tests then builds a distribution ZIP.
+```
+composer release
+```
 
 ### Git hooks
+
 #### Pre commit
+
 An optional pre-commit hook is [provided](dev/git-hooks/pre-commit).  
 This hook runs the ```composer check``` command for you before any commit.  
+This is very good practice to avoid commiting defective code.  
 To install it, just symlink to it:
 ```sh
 ln -s -f ../../dev/git-hooks/pre-commit .git/hooks/pre-commit
 ```
+
+## Publishing the module
+The de-facto standard for publishing and marketing modules for Dolibarr is the [Dolistore](https://www.dolistore.com).  
+Templates for required images and texts are [provided](dev/dolistore).  
+Check the dedicated [README](dev/dolistore/README.md) for more informations.
 
 Contributions
 -------------
