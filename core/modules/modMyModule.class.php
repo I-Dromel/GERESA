@@ -25,16 +25,19 @@
  */
 include_once DOL_DOCUMENT_ROOT . "/core/modules/DolibarrModules.class.php";
 
+// The class name should start with a lower case mod for Dolibarr to pick it up
+// so we ignore the Squiz.Classes.ValidClassName.NotCamelCaps rule.
+// @codingStandardsIgnoreStart
 /**
  * Description and activation class for module MyModule
  */
 class modMyModule extends DolibarrModules
 {
-
+	// @codingStandardsIgnoreEnd
 	/**
 	 * 	Constructor. Define names, constants, directories, boxes, permissions
 	 *
-	 * 	@param	DoliDB		$db	Database handler
+	 * 	@param	\DoliDB		$db	Database handler
 	 */
 	public function __construct($db)
 	{
@@ -79,7 +82,7 @@ class modMyModule extends DolibarrModules
 		$this->editor_name = 'My Company';
 		$this->editor_url = 'http://www.example.com';
 		// Possible values for version are: 'development', 'experimental' or version
-		$this->version = 'development';
+		$this->version = '1.0.0';
 		// Key used in llx_const table to save module status enabled/disabled
 		// (where MYMODULE is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);

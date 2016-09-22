@@ -68,19 +68,15 @@ class ActionsMyModule
 		echo "action: " . $action;
 		print_r($object);
 
-		if (in_array('somecontext', explode(':', $parameters['context'])))
-		{
+		if (in_array('somecontext', explode(':', $parameters['context']))) {
 		  // do something only for the context 'somecontext'
 		}
 
-		if (! $error)
-		{
+		if (! $error) {
 			$this->results = array('myreturn' => $myvalue);
 			$this->resprints = 'A text to show';
 			return 0; // or return 1 to replace standard code
-		}
-		else
-		{
+		} else {
 			$this->errors[] = 'Error message';
 			return -1;
 		}

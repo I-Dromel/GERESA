@@ -21,10 +21,12 @@ This template also contains a sample configuration for Transifex managed transla
 
 For more informations, see the [translator's documentation](http://wiki.dolibarr.org/index.php/Translator_documentation).
 
-The Transifex project for this module is available at <http://transifex.com/projects/p/dolibarr-module-template>
+There is a [Transifex project](http://transifex.com/projects/p/dolibarr-module-template) for this module.
 
 Install
 -------
+
+### Manually
 
 - Make sure Dolibarr (>= 3.3.x) is already installed and configured on your workstation or development server.
 
@@ -67,22 +69,45 @@ Install
 git clone git@github.com:GPCsolutions/dolibarr-module-template.git mymodule
 ```
 
-- From your browser:
+- Install [Composer](https://getcomposer.org) dependencies:
+```sh
+composer install
+```
 
-    - Log into Dolibarr as a super-administrator
+Follow the [final steps](#final_steps).
 
-    - Under "Setup" -> "Other setup", set ```MAIN_FEATURES_LEVEL``` to ```2```
+### Using [Composer](https://getcomposer.org)
+Require this repository from Dolibarr's composer:
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/gpcsolutions/dolibarr-module-template",
+    }
+  ],
+  "require": {
+    "gpcsolutions/mymodule": "dev-master"
+  }
+}
+```
 
-    - Go to "Setup" -> "Modules"
+Follow the [final steps](#final_steps).
 
-    - The module is under one of the tabs
+### <a name="final_steps"></a>Final steps
 
-    - You should now be able to enable the new module and start coding ;)
+From your browser:
+
+  - Log into Dolibarr as a super-administrator
+  - Under "Setup" -> "Other setup", set ```MAIN_FEATURES_LEVEL``` to ```2```
+  - Go to "Setup" -> "Modules"
+  - The module is under one of the tabs
+  - You should now be able to enable the new module and start coding ;)
 
 Contributions
 -------------
 
-Feel free to contribute and report defects at <http://github.com/GPCsolutions/dolibarr-module-template/issues>
+Feel free to contribute and report defects on our [issue tracker](http://github.com/GPCsolutions/dolibarr-module-template/issues).
 
 Licenses
 --------
@@ -105,7 +130,6 @@ Licensed under MIT.
 #### [GNU Licenses logos](https://www.gnu.org/graphics/license-logos.html)
 
 Public domain
-
 
 #### Documentation
 
