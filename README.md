@@ -104,6 +104,17 @@ From your browser:
   - The module is under one of the tabs
   - You should now be able to enable the new module and start coding ;)
 
+## Provided tools
+
+### Git hooks
+#### Pre commit
+An optional pre-commit hook is [provided](dev/git-hooks/pre-commit).  
+This hook runs the ```composer check``` command for you before any commit.  
+To install it, just symlink to it:
+```sh
+ln -s -f ../../dev/git-hooks/pre-commit .git/hooks/pre-commit
+```
+
 Contributions
 -------------
 
