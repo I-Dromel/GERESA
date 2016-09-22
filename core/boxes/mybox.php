@@ -30,7 +30,7 @@ include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
  * Warning: for the box to be detected correctly by dolibarr,
  * the filename should be the lowercase classname
  */
-class mybox extends ModeleBoxes
+class MyBox extends ModeleBoxes
 {
 	/**
 	 * @var string Alphanumeric ID. Populated by the constructor.
@@ -79,7 +79,7 @@ class mybox extends ModeleBoxes
 	 * @param DoliDB $db Database handler
 	 * @param string $param More parameters
 	 */
-	public function __construct(DoliDB $db, $param='')
+	public function __construct(DoliDB $db, $param = '')
 	{
 		global $langs;
 		$langs->load("boxes");

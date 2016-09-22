@@ -17,38 +17,21 @@
  */
 
 /**
- * 	\file		core/triggers/interface_99_modMyModule_Mytrigger.class.php
- * 	\ingroup	mymodule
- * 	\brief		Sample trigger
- * 	\remarks	You can create other triggers by copying this one
- * 				- File name should be either:
- * 					interface_99_modMyModule_Mytrigger.class.php
- * 					interface_99_all_Mytrigger.class.php
- * 				- The file must stay in core/triggers
- * 				- The class name must be InterfaceMytrigger
- * 				- The constructor method must be named InterfaceMytrigger
- * 				- The name property name must be Mytrigger
+ *    \file        core/triggers/interface_99_modMyModule_Mytrigger.class.php
+ *    \ingroup    mymodule
+ *    \brief        Sample trigger
+ *    \remarks    You can create other triggers by copying this one
+ *                - File name should be either:
+ *                    interface_99_modMyModule_Mytrigger.class.php
+ *                    interface_99_all_Mytrigger.class.php
+ *                - The file must stay in core/triggers
+ *                - The class name must be InterfaceMytrigger
+ *                - The constructor method must be named InterfaceMytrigger
+ *                - The name property name must be Mytrigger
  */
 
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
-
-// Extend DolibarrTriggers from Dolibarr 3.7
-$dolibarr_version = versiondolibarrarray();
-if ($dolibarr_version[0] < 3 || ($dolibarr_version[0] == 3 && $dolibarr_version[1] < 7)) { // DOL_VERSION < 3.7
-	/**
-	 * Class MyTrigger
-	 */
-	abstract class MyTrigger
-	{
-	}
-} else {
-	/**
-	 * Class MyTrigger
-	 */
-	abstract class MyTrigger extends DolibarrTriggers
-	{
-	}
-}
+require_once '../../class/mytrigger.class.php';
 
 /**
  * Class InterfaceMytrigger
@@ -111,12 +94,13 @@ class InterfaceMytrigger extends MyTrigger
 
 		if ($this->version == 'development') {
 			return $langs->trans("Development");
-		} elseif ($this->version == 'experimental')
-
-				return $langs->trans("Experimental");
-		elseif ($this->version == 'dolibarr') return DOL_VERSION;
-		elseif ($this->version) return $this->version;
-		else {
+		} elseif ($this->version == 'experimental') {
+			return $langs->trans("Experimental");
+		} elseif ($this->version == 'dolibarr') {
+			return DOL_VERSION;
+		} elseif ($this->version) {
+			return $this->version;
+		} else {
 			return $langs->trans("Unknown");
 		}
 	}
@@ -124,36 +108,39 @@ class InterfaceMytrigger extends MyTrigger
 	/**
 	 * Compatibility trigger function for Dolibarr < 3.7
 	 *
-	 * @param int           $action Trigger action
-	 * @param CommonObject  $object Object trigged from
-	 * @param User          $user   User that trigged
-	 * @param Translate     $langs  Translations handler
-	 * @param Conf          $conf   Configuration
+	 * @param int $action Trigger action
+	 * @param CommonObject $object Object trigged from
+	 * @param User $user User that trigged
+	 * @param Translate $langs Translations handler
+	 * @param Conf $conf Configuration
 	 * @return int                  <0 if KO, 0 if no triggered ran, >0 if OK
 	 * @deprecated Replaced by DolibarrTriggers::runTrigger()
 	 */
+	// @codingStandardsIgnoreStart
 	public function run_trigger($action, $object, $user, $langs, $conf)
 	{
 		return $this->runTrigger($action, $object, $user, $langs, $conf);
 	}
+	// @codingStandardsIgnoreEnd
 
 	/**
 	 * Function called when a Dolibarrr business event is done.
 	 * All functions "runTrigger" are triggered if file
 	 * is inside directory core/triggers
 	 *
-	 * @param string    $action Event action code
-	 * @param Object    $object Object
-	 * @param User      $user   Object user
-	 * @param Translate $langs  Object langs
-	 * @param Conf      $conf   Object conf
+	 * @param string $action Event action code
+	 * @param Object $object Object
+	 * @param User $user Object user
+	 * @param Translate $langs Object langs
+	 * @param Conf $conf Object conf
 	 * @return int              <0 if KO, 0 if no triggered ran, >0 if OK
 	 */
 	public function runTrigger($action, $object, User $user, Translate $langs, Conf $conf)
 	{
 		// Put here code you want to execute when a Dolibarr business events occurs.
 		// Data and type of action are stored into $object and $action
-		// Users
+
+		/** Users */
 		if ($action == 'USER_LOGIN') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
@@ -200,10 +187,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Groups
-		elseif ($action == 'GROUP_CREATE') {
+			/** Groups */
+		} elseif ($action == 'GROUP_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -215,10 +201,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Companies
-		elseif ($action == 'COMPANY_CREATE') {
+			/** Companies */
+		} elseif ($action == 'COMPANY_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -230,10 +215,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Contacts
-		elseif ($action == 'CONTACT_CREATE') {
+			/** Contacts */
+		} elseif ($action == 'CONTACT_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -245,10 +229,8 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
-
-		// Products
-		elseif ($action == 'PRODUCT_CREATE') {
+			// Products
+		} elseif ($action == 'PRODUCT_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -260,10 +242,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Customer orders
-		elseif ($action == 'ORDER_CREATE') {
+			/** Customer orders */
+		} elseif ($action == 'ORDER_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -295,10 +276,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Supplier orders
-		elseif ($action == 'ORDER_SUPPLIER_CREATE') {
+			/** Supplier orders */
+		} elseif ($action == 'ORDER_SUPPLIER_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -314,10 +294,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Proposals
-		elseif ($action == 'PROPAL_CREATE') {
+			/** Proposals */
+		} elseif ($action == 'PROPAL_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -365,10 +344,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Contracts
-		elseif ($action == 'CONTRACT_CREATE') {
+			/** Contracts */
+		} elseif ($action == 'CONTRACT_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -392,10 +370,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Bills
-		elseif ($action == 'BILL_CREATE') {
+			/** Bills */
+		} elseif ($action == 'BILL_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -435,10 +412,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Payments
-		elseif ($action == 'PAYMENT_CUSTOMER_CREATE') {
+			/** Payments */
+		} elseif ($action == 'PAYMENT_CUSTOMER_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -454,10 +430,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Interventions
-		elseif ($action == 'FICHEINTER_CREATE') {
+			/** Interventions */
+		} elseif ($action == 'FICHEINTER_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -473,10 +448,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Members
-		elseif ($action == 'MEMBER_CREATE') {
+			/** Members */
+		} elseif ($action == 'MEMBER_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -504,10 +478,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Categories
-		elseif ($action == 'CATEGORY_CREATE') {
+			/** Categories */
+		} elseif ($action == 'CATEGORY_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -519,10 +492,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Projects
-		elseif ($action == 'PROJECT_CREATE') {
+			/** Projects */
+		} elseif ($action == 'PROJECT_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -534,10 +506,8 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
-
-		// Project tasks
-		elseif ($action == 'TASK_CREATE') {
+			/** Project tasks */
+		} elseif ($action == 'TASK_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -549,10 +519,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Task time spent
-		elseif ($action == 'TASK_TIMESPENT_CREATE') {
+			/** Task time spent */
+		} elseif ($action == 'TASK_TIMESPENT_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -564,10 +533,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// Shipping
-		elseif ($action == 'SHIPPING_CREATE') {
+			/** Shipping */
+		} elseif ($action == 'SHIPPING_CREATE') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
@@ -591,10 +559,9 @@ class InterfaceMytrigger extends MyTrigger
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
-		}
 
-		// File
-		elseif ($action == 'FILE_UPLOAD') {
+			/** File */
+		} elseif ($action == 'FILE_UPLOAD') {
 			dol_syslog(
 				"Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id
 			);
