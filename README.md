@@ -114,7 +114,7 @@ Licenses
 
 ### Main code
 
-![GPLv3 logo](dev/img/gplv3-127x51.png)
+![GPLv3 logo](img/gplv3.png)
 
 GPLv3 or (at your option) any later version.
 
@@ -124,7 +124,7 @@ See [COPYING](COPYING) for more information.
 
 #### [Parsedown](http://parsedown.org/)
 
-Used to display this README in the module's about page.
+Used to display this README in the module's about page.  
 Licensed under MIT.
 
 #### [GNU Licenses logos](https://www.gnu.org/graphics/license-logos.html)
@@ -135,4 +135,4 @@ Public domain
 
 All texts and readmes.
 
-![GFDL logo](dev/img/gfdl-129x44.png)
+![GFDL logo](img/gfdl.png)

@@ -32,9 +32,8 @@ global $langs, $user;
 
 // Libraries
 require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
+require_once '../class/ParsedownDolibarr.php';
 require_once '../lib/mymodule.lib.php';
-
-require __DIR__ . '/../vendor/autoload.php';
 
 //require_once "../class/myclass.class.php";
 // Translations
@@ -79,13 +78,7 @@ echo $langs->trans("MyModuleAboutPage");
 echo '<br>';
 
 $buffer = file_get_contents(dol_buildpath('/mymodule/README.md', 0));
-echo Parsedown::instance()->text($buffer);
-
-echo '<br>',
-'<a href="' . dol_buildpath('/mymodule/COPYING', 1) . '">',
-'<img src="' . dol_buildpath('/mymodule/img/gplv3.png', 1) . '"/>',
-'</a>';
-
+echo ParsedownDolibarr::instance()->text($buffer);
 
 // Page end
 dol_fiche_end();
