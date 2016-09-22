@@ -154,16 +154,20 @@ Runs the checks and tests then builds a distribution ZIP.
 composer release
 ```
 
-### Git hooks
+#### Git hooks
 
-#### Pre commit
+Optional [GIT hooks](https://git-scm.com/book/it/v2/Customizing-Git-Git-Hooks) are provided.
+These are just wrappers calling composer scripts.  
+They ensure best practices are followed during module devlopment.  
 
-An optional pre-commit hook is [provided](dev/git-hooks/pre-commit).  
-This hook runs the ```composer check``` command for you before any commit.  
-This is very good practice to avoid commiting defective code.  
-To install it, just symlink to it:
-```sh
-ln -s -f ../../dev/git-hooks/pre-commit .git/hooks/pre-commit
+Install:
+```
+composer git_hooks_install
+```
+
+Remove:
+```
+composer git_hooks_remove
 ```
 
 ## Publishing the module

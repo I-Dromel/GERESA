@@ -76,4 +76,15 @@ Release a module.
 Runs all checks and tests, remove dev dependencies, builds a zip ready to be published and restores dev dependencies.
 
 ### build
-Builds a module zip.
+Builds a module ZIP.  
+Requires Perl.
+
+### tx*
+Manages transifex.  
+Requires the ```tx``` client.
+
+### git_hooks_*
+Installs or remove the [provided](dev/git-hooks) GIT hooks.
+
+### git*
+Provided GIT hooks callbacks.

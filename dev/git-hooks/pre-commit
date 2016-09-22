@@ -1,2 +1,2 @@
 #!/bin/sh
-composer check
+composer git_pre_commit

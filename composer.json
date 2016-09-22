@@ -50,10 +50,21 @@
     "release": [
       "@check",
       "@test",
+      "@tx_pull",
       "@composer update --no-dev",
       "@build",
       "@composer update"
     ],
-    "build": "cd build; ./makepack-dolibarrmodule.pl"
+    "build": "cd build; ./makepack-dolibarrmodule.pl",
+    "tx_push": "tx push -s",
+    "tx_pull": "tx pull -a",
+    "git_hooks_install": "git config --add core.hooksPath dev/git-hooks",
+    "git_hooks_remove": "git config --unset core.hooksPath",
+    "git_pre_commit": "@check",
+    "git_post_commit": "",
+    "git_pre_push": [
+      "@test",
+      "@tx_push"
+    ]
   }
 }
