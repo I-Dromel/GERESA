@@ -34,11 +34,11 @@
     "post-install-cmd": "@compat_workaround",
     "compat_workaround": "if [ -d \"vendor/wimg/php-compatibility\" ]; then\n rm -fr \"vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility\"\n cp -a \"vendor/wimg/php-compatibility\" \"vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility\"\n fi",
     "check": [
-      "@lint",
+      "@check_lint",
       "@check_compat",
       "@check_style"
     ],
-    "lint": "parallel-lint --exclude vendor --blame .",
+    "check_lint": "parallel-lint --exclude vendor --blame .",
     "check_compat": "TRAVIS_PHP_VERSION=\"${TRAVIS_PHP_VERSION:=5.3-7.0}\"; phpcs -n -p -d memory_limit=-1 -d max_execution_time=-1 --colors --standard=PHPCompatibility --runtime-set testVersion $TRAVIS_PHP_VERSION --ignore=vendor/\\* .",
     "check_style": "phpcs -s -n -p -d memory_limit=-1 -d max_execution_time=-1 --colors --tab-width=4 --encoding=utf-8 --standard=dev/codesniffer/DolibarrPSR2.xml  --ignore=vendor/\\* .",
     "test": [
