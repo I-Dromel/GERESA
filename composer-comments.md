@@ -59,14 +59,14 @@ PHP version when running this on Travis. Else we set it to all supported PHP ver
 ### check_style
 We use a custom PSR2 ruleset allowing tab indents.
 
-### TODO: test
+### test
 Run PHPunit and Selenium tests.
 
-### TODO: test_unit
-PHPunit tests.
+### test_unit
+Run PHPunit tests.
 
 ### TODO: test_functional
-Selenium tests.
+Run Selenium tests.
 
 ### TODO: dev_doc
 Builds Doxygen developer documentation.

@@ -139,10 +139,9 @@ Runs a linter, a PHP compatibility version checker and checks coding style.
 composer check
 ```
 
-#### Test (TODO)
-
-Does nothing at the moment.  
-Will run unit and functional tests.
+#### Test
+  
+Runs unit and functional tests.
 ```sh
 composer test
 ```
