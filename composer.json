@@ -45,8 +45,8 @@
       "@test_unit",
       "@test_functional"
     ],
-    "test_unit": "phpunit --testdox test/unit",
-    "test_functional": "",
+    "test_unit": "phpunit test/unit",
+    "test_functional": "phpunit test/functional",
     "release": [
       "@check",
       "@test",

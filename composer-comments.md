@@ -65,7 +65,7 @@ Run PHPunit and Selenium tests.
 ### test_unit
 Run PHPunit tests.
 
-### TODO: test_functional
+### test_functional
 Run Selenium tests.
 
 ### TODO: dev_doc
