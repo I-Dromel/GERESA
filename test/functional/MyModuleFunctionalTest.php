@@ -136,7 +136,6 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     /**
      * Test enabling the module
      *
-     * @depends testLogin
      * @depends testEnableDeveloperMode
      */
     public function testEnableMyModule()
@@ -156,6 +155,32 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
         // Page reloaded, we need a new Xpath
         $module_status_image = $this->byXPath($module_status_image_path);
         return $this->assertContains('switch_on.png', $module_status_image->attribute('src'), "Module enabled");
+    }
+
+    /**
+     * @depends testEnableMyModule
+     */
+    public function testConfigurationPage()
+    {
+        $this->byHref('mymodule/admin/setup.php')->click();
+        return $this->assertContains('mymodule/admin/setup.php', $this->url(), 'Configuration page');
+    }
+
+    /**
+     * @depends testConfigurationPage
+     */
+    public function testAboutPage()
+    {
+        $this->byHref('mymodule/admin/about.php')->click();
+        return $this->assertContains('mymodule/admin/about.php', $this->url(), 'About page');
+    }
+
+    /**
+     * @depends testAboutPage
+     */
+    public function testAboutPageRendersMarkdownReadme()
+    {
+        return $this->assertEquals('Dolibarr Module Template (aka My Module)', $this->byTag('h1')->text(), "Readme title");
     }
 
     /**
