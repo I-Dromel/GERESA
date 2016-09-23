@@ -31,7 +31,7 @@
  */
 
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
-require_once '../../class/mytrigger.class.php';
+require_once DOL_DOCUMENT_ROOT . dol_buildpath('/mymodule/class/mytrigger.class.php', 1);
 
 /**
  * Class InterfaceMytrigger
