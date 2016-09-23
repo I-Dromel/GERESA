@@ -138,7 +138,7 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      *
      * @depends testEnableDeveloperMode
      */
-    public function testEnableMyModule()
+    public function testModuleEnabled()
     {
         $this->byHref('admin/modules.php')->click();
         $module_status_image_path='//a[contains(@href, "' . self::$module_id . '")]/img';
@@ -158,7 +158,7 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
-     * @depends testEnableMyModule
+     * @depends testModuleEnabled
      */
     public function testConfigurationPage()
     {
@@ -181,6 +181,18 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     public function testAboutPageRendersMarkdownReadme()
     {
         return $this->assertEquals('Dolibarr Module Template (aka My Module)', $this->byTag('h1')->text(), "Readme title");
+    }
+
+    /**
+     * @depends testModuleEnabled
+     */
+    public function testTriggerEnabled()
+    {
+        $this->byHref('admin/tools/index.php')->click();
+        $this->byHref('admin/system/dolibarr.php')->click();
+        $this->byHref('admin/triggers.php')->click();
+        $trigger_tick_image = $this->byXPath('//td[text()="interface_99_modMyModule_MyTrigger.class.php"]/following::img')->attribute('src');
+        return $this->assertContains('tick.png', $trigger_tick_image, "Trigger enabled");
     }
 
     /**
