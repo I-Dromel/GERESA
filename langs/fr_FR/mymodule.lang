@@ -43,3 +43,9 @@ MyModuleAboutPage = Page à propos de mon module
 # Page d'exemple
 #
 MyPageName = Nom de ma page
+
+#
+# Box d'exemple
+#
+MyBox = Ma boîte
+MyBoxDescription = Description de ma boîte

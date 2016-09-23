@@ -43,3 +43,9 @@ MyModuleAboutPage = My module about page
 # Sample page
 #
 MyPageName = My page name
+
+#
+# Sample box
+#
+MyBox = My box
+MyBoxDescription = My box description

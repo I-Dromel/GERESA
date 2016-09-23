@@ -83,6 +83,7 @@ class MyBox extends ModeleBoxes
 	{
 		global $langs;
 		$langs->load("boxes");
+		$langs->load('mymodule@mymodule');
 
 		$this->boxlabel = $langs->transnoentitiesnoconv("MyBox");
 
