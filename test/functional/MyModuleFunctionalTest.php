@@ -180,19 +180,49 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testAboutPageRendersMarkdownReadme()
     {
-        return $this->assertEquals('Dolibarr Module Template (aka My Module)', $this->byTag('h1')->text(), "Readme title");
+        return $this->assertEquals(
+            'Dolibarr Module Template (aka My Module)',
+            $this->byTag('h1')->text(),
+            "Readme title"
+        );
     }
 
     /**
      * @depends testModuleEnabled
      */
-    public function testTriggerEnabled()
+    public function testBoxDeclared()
+    {
+        $this->byHref('admin/boxes.php')->click();
+        return $this->assertContains('mybox', $this->source(), "Box enabled");
+    }
+
+    /**
+     * @depends testModuleEnabled
+     */
+    public function testTriggerDeclared()
     {
         $this->byHref('admin/tools/index.php')->click();
         $this->byHref('admin/system/dolibarr.php')->click();
         $this->byHref('admin/triggers.php')->click();
-        $trigger_tick_image = $this->byXPath('//td[text()="interface_99_modMyModule_MyTrigger.class.php"]/following::img')->attribute('src');
-        return $this->assertContains('tick.png', $trigger_tick_image, "Trigger enabled");
+        return $this->assertContains(
+            'interface_99_modMyModule_MyTrigger.class.php',
+            $this->byTag('body')->text(),
+            "Trigger declared"
+        );
+    }
+
+    /**
+     * @depends testTriggerDeclared
+     */
+    public function testTriggerEnabled()
+    {
+        return $this->assertContains(
+            'tick.png',
+            $this
+                ->byXPath('//td[text()="interface_99_modMyModule_MyTrigger.class.php"]/following::img')
+                ->attribute('src'),
+            "Trigger enabled"
+        );
     }
 
     /**
