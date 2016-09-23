@@ -141,7 +141,7 @@ class modMyModule extends DolibarrModules
 
 		// Config pages. Put here list of php pages
 		// stored into mymodule/admin directory, used to setup module.
-		$this->config_page_url = array("admin_mymodule.php@mymodule");
+		$this->config_page_url = array("setup.php@mymodule");
 
 		// Dependencies
 		// A condition to hide module
