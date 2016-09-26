@@ -70,7 +70,7 @@ Run Selenium tests.
 
 ### release
 Release a module.
-Run all checks and tests, remove dev dependencies, builds a zip ready to be published and restores dev dependencies.
+Run all checks and tests, remove dev dependencies, build a zip ready to be published and restores dev dependencies.
 
 ### build
 Build a module ZIP.  

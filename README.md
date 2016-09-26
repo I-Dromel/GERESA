@@ -116,7 +116,7 @@ Just make sure you provide a CamelCase name.
 ./dev/newmodule.sh [NewName]
 ```
 
-Some work has still to be done manually:
+Some work still has to be done manually:
 - Rename the directory holding the code
 - Maybe rename some other bits (Search for 'my' in filenames and code)
 - Update your module ID in the module descriptor
@@ -125,7 +125,7 @@ Some work has still to be done manually:
     - String referencing the template
 - Remove the features you don't plan to use
 - Fill the copyright notices at the top of each file
-- Starti a new GIT history 
+- Start a new GIT history 
 ```
 git checkout --orphan [new_branch_name]
 ```
@@ -138,21 +138,24 @@ See the [composer comments](composer-comments.md) or the [composer.json](compose
 
 #### Check
 
-Runs a linter, a PHP compatibility version checker and checks coding style.
+Run a linter, a PHP compatibility version checker and checks coding style.
 ```sh
 composer check
 ```
 
 #### Test
   
-Runs unit and functional tests.
+Run unit and functional tests.
 ```sh
 composer test
 ```
 
+#### Doc
+Build code and user documentation.
+
 #### Release
 
-Runs the checks and tests then builds a distribution ZIP.
+Run the checks and tests then build a distribution ZIP.
 ```
 composer release
 ```
@@ -161,7 +164,7 @@ composer release
 
 Optional [GIT hooks](https://git-scm.com/book/it/v2/Customizing-Git-Git-Hooks) are provided.
 These are just wrappers calling composer scripts.  
-They ensure best practices are followed during module devlopment.  
+They ensure best practices are followed during module development.  
 
 Install:
 ```
