@@ -24,6 +24,11 @@
  * Put detailed description here.
  */
 
+/**
+ * Prepare admin pages header
+ *
+ * @return array
+ */
 function mymoduleAdminPrepareHead()
 {
 	global $langs, $conf;

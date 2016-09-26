@@ -27,7 +27,8 @@
     "phpunit/phpunit": "^4",
     "squizlabs/php_codesniffer": "^2",
     "phpunit/phpunit-selenium": "^2",
-    "wimg/php-compatibility": "^7"
+    "wimg/php-compatibility": "^7",
+    "phpdocumentor/phpdocumentor": "^2"
   },
   "scripts": {
     "post-update-cmd": "@compat_workaround",
@@ -38,9 +39,9 @@
       "@check_compat",
       "@check_style"
     ],
-    "check_lint": "parallel-lint --exclude vendor --blame .",
-    "check_compat": "TRAVIS_PHP_VERSION=\"${TRAVIS_PHP_VERSION:=5.3-7.0}\"; phpcs -n -p -d memory_limit=-1 -d max_execution_time=-1 --colors --standard=PHPCompatibility --runtime-set testVersion $TRAVIS_PHP_VERSION --ignore=vendor/\\* .",
-    "check_style": "phpcs -s -n -p -d memory_limit=-1 -d max_execution_time=-1 --colors --tab-width=4 --encoding=utf-8 --standard=dev/codesniffer/DolibarrPSR2.xml  --ignore=vendor/\\* .",
+    "check_lint": "parallel-lint --exclude build --exclude doc --exclude vendor --blame .",
+    "check_compat": "TRAVIS_PHP_VERSION=\"${TRAVIS_PHP_VERSION:=5.3-7.0}\"; phpcs -n -p -d memory_limit=-1 -d max_execution_time=-1 --colors --standard=PHPCompatibility --runtime-set testVersion $TRAVIS_PHP_VERSION --ignore=build/\\*,doc/\\*,vendor/\\* .",
+    "check_style": "phpcs -s -n -p -d memory_limit=-1 -d max_execution_time=-1 --colors --tab-width=4 --encoding=utf-8 --standard=dev/codesniffer/DolibarrPSR2.xml  --ignore=build/\\*,doc/\\*,vendor/\\* .",
     "test": [
       "@test_unit",
       "@test_functional"
@@ -70,7 +71,12 @@
       "@doc_dev",
       "@doc_user"
     ],
-    "doc_dev": "cd build/doxygen; doxygen mymodule.doxyfile",
+    "doc_dev" : [
+      "@doc_dev_doxygen",
+      "@doc_dev_phpdoc"
+    ],
+    "doc_dev_doxygen": "cd build/doxygen; doxygen mymodule.doxyfile",
+    "doc_dev_phpdoc": "phpdoc",
     "doc_user": ""
   }
 }

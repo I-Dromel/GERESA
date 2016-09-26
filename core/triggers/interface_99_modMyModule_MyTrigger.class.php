@@ -33,6 +33,7 @@
  * - The name property name must be Mytrigger
  */
 
+/** Includes */
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
 require_once DOL_DOCUMENT_ROOT . dol_buildpath('/mymodule/class/MyTrigger.php', 1);
 
@@ -108,6 +109,7 @@ class InterfaceMytrigger extends MyTrigger
 		}
 	}
 
+    // @codingStandardsIgnoreStart
 	/**
 	 * Compatibility trigger function for Dolibarr < 3.7
 	 *
@@ -119,7 +121,6 @@ class InterfaceMytrigger extends MyTrigger
 	 * @return int                  <0 if KO, 0 if no triggered ran, >0 if OK
 	 * @deprecated Replaced by DolibarrTriggers::runTrigger()
 	 */
-	// @codingStandardsIgnoreStart
 	public function run_trigger($action, $object, $user, $langs, $conf)
 	{
 		return $this->runTrigger($action, $object, $user, $langs, $conf);

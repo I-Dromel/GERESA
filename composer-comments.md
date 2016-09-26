@@ -72,8 +72,14 @@ Run Selenium tests.
 Build project documentation.
 
 ### doc_dev
+Builds Doxygen and PHPdoc.  
+Modify to select your favorite.
+
+### doc_dev_doxygen
 Build Doxygen developer documentation.  
 Requires [Doxygen](http://www.doxygen.org/).
+
+### doc_dev_phpdoc
 
 ### TODO: doc_user
 Build Sphinx user documentation.

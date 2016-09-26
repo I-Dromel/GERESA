@@ -43,9 +43,9 @@ class modMyModule extends DolibarrModules
 {
 	// @codingStandardsIgnoreEnd
 	/**
-	 * 	Constructor. Define names, constants, directories, boxes, permissions
+	 * Constructor. Define names, constants, directories, boxes, permissions
 	 *
-	 * 	@param	\DoliDB		$db	Database handler
+	 * @param DoliDB $db Database handler
 	 */
 	public function __construct($db)
 	{
@@ -519,8 +519,8 @@ class modMyModule extends DolibarrModules
 	 * (defined in constructor) into Dolibarr database.
 	 * It also creates data directories
 	 *
-	 * 	@param		string	$options	Options when enabling module ('', 'noboxes')
-	 * 	@return		int					1 if OK, 0 if KO
+	 * @param string $options Options when enabling module ('', 'noboxes')
+	 * @return int 1 if OK, 0 if KO
 	 */
 	public function init($options = '')
 	{
@@ -537,7 +537,7 @@ class modMyModule extends DolibarrModules
 	 * and create data commands must be stored in directory /mymodule/sql/
 	 * This function is called by this->init
 	 *
-	 * 	@return		int		<=0 if KO, >0 if OK
+	 * @return int <=0 if KO, >0 if OK
 	 */
 	private function loadTables()
 	{
@@ -549,8 +549,8 @@ class modMyModule extends DolibarrModules
 	 * Remove from database constants, boxes and permissions from Dolibarr database.
 	 * Data directories are not deleted
 	 *
-	 * 	@param		string	$options	Options when enabling module ('', 'noboxes')
-	 * 	@return		int					1 if OK, 0 if KO
+	 * @param string $options Options when enabling module ('', 'noboxes')
+	 * @return int 1 if OK, 0 if KO
 	 */
 	public function remove($options = '')
 	{

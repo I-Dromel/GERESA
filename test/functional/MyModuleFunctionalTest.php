@@ -44,11 +44,22 @@ use PHPUnit_Extensions_Selenium2TestCase_WebDriverException;
 class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
 {
     // TODO: move to a global configuration file?
+    /** @var string Base URL of the webserver under test */
     protected static $base_url = 'http://dev.zenfusion.fr';
+    /**
+     * @var string Dolibarr admin username
+     * @see authenticate
+     */
     protected static $dol_admin_user = 'admin';
+    /**
+     * @var string Dolibarr admin password
+     * @see authenticate
+     */
     protected static $dol_admin_pass = 'admin';
+    /** @var int Dolibarr module ID */
     private static $module_id = 500000; // TODO: autodetect?
 
+    /** @var array Browsers to test with */
     public static $browsers = array(
         array(
             'browser' => 'Google Chrome on Linux',
@@ -172,6 +183,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
+     * Test access to the configuration page
+     *
      * @depends testModuleEnabled
      */
     public function testConfigurationPage()
@@ -182,6 +195,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
+     * Test access to the about page
+     *
      * @depends testConfigurationPage
      */
     public function testAboutPage()
@@ -192,6 +207,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
+     * Test about page is rendering Markdown
+     *
      * @depends testAboutPage
      */
     public function testAboutPageRendersMarkdownReadme()
@@ -206,6 +223,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
+     * Test box is properly declared
+     *
      * @depends testModuleEnabled
      */
     public function testBoxDeclared()
@@ -216,6 +235,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
+     * Test trigger is properly enabled
+     *
      * @depends testModuleEnabled
      */
     public function testTriggerDeclared()
@@ -230,6 +251,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
+     * Test trigger is properly declared
+     *
      * @depends testTriggerDeclared
      */
     public function testTriggerEnabled()

@@ -23,6 +23,8 @@
  *
  * Put detailed description here.
  */
+
+/** Includes */
 include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
 
 /**

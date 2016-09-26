@@ -23,7 +23,8 @@
  *
  * Put detailed description here.
  */
-// Put here all includes required by your class file
+
+/** Includes */
 //require_once DOL_DOCUMENT_ROOT."/core/class/commonobject.class.php";
 //require_once DOL_DOCUMENT_ROOT."/societe/class/societe.class.php";
 //require_once DOL_DOCUMENT_ROOT."/product/class/product.class.php";
@@ -34,19 +35,27 @@
 class MyClass // extends CommonObject
 {
 
-	private $db; //!< To store db handler
-	public $error; //!< To return error code (or message)
-	public $errors = array(); //!< To return several error codes (or messages)
-	//public $element='skeleton';	//!< Id that identify managed objects
-	//public $table_element='skeleton';	//!< Name of table without prefix where object is stored
+    /** @var DoliDb Database handler */
+	private $db;
+    /** @var string Error code or message */
+	public $error;
+    /** @var array Several error codes or messages */
+	public $errors = array();
+    /** @var string Id to identify managed object */
+	//public $element='myelement';
+    /** @var string Name of table without prefix where object is stored */
+	//public $table_element='mytable';
+    /** @var int An example ID */
 	public $id;
+    /** @var mixed An example property */
 	public $prop1;
+    /** @var mixed An example property */
 	public $prop2;
 
 	/**
 	 * Constructor
 	 *
-	 * 	@param	DoliDb		$db		Database handler
+	 * @param DoliDb $db Database handler
 	 */
 	public function __construct($db)
 	{
@@ -58,9 +67,9 @@ class MyClass // extends CommonObject
 	/**
 	 * Create object into database
 	 *
-	 * 	@param		User	$user		User that create
-	 * 	@param		int		$notrigger	0=launch triggers after, 1=disable triggers
-	 * 	@return		int					<0 if KO, Id of created object if OK
+	 * @param User $user User that create
+	 * @param int $notrigger 0=launch triggers after, 1=disable triggers
+	 * @return int <0 if KO, Id of created object if OK
 	 */
 	public function create($user, $notrigger = 0)
 	{
@@ -131,8 +140,8 @@ class MyClass // extends CommonObject
 	/**
 	 * Load object in memory from database
 	 *
-	 * 	@param		int		$id	Id object
-	 * 	@return		int			<0 if KO, >0 if OK
+	 * @param int $id Id object
+	 * @return int <0 if KO, >0 if OK
 	 */
 	public function fetch($id)
 	{
@@ -170,9 +179,9 @@ class MyClass // extends CommonObject
 	/**
 	 * Update object into database
 	 *
-	 * 	@param		User	$user		User that modify
-	 * 	@param		int		$notrigger	0=launch triggers after, 1=disable triggers
-	 * 	@return		int					<0 if KO, >0 if OK
+	 * @param User $user User that modify
+	 * @param int $notrigger 0=launch triggers after, 1=disable triggers
+	 * @return int <0 if KO, >0 if OK
 	 */
 	public function update($user = 0, $notrigger = 0)
 	{
@@ -237,9 +246,9 @@ class MyClass // extends CommonObject
 	/**
 	 * Delete object in database
 	 *
-	 * 	@param		User	$user		User that delete
-	 * 	@param		int		$notrigger	0=launch triggers after, 1=disable triggers
-	 * 	@return		int					<0 if KO, >0 if OK
+	 * @param User $user User that delete
+	 * @param int $notrigger 0=launch triggers after, 1=disable triggers
+	 * @return int <0 if KO, >0 if OK
 	 */
 	public function delete($user, $notrigger = 0)
 	{
@@ -292,8 +301,8 @@ class MyClass // extends CommonObject
 	/**
 	 * Load an object from its id and create a new one in database
 	 *
-	 * 	@param		int		$fromid		Id of object to clone
-	 * 	@return		int					New id of clone
+	 * @param int $fromid Id of object to clone
+	 * @return int New id of clone
 	 */
 	public function createFromClone($fromid)
 	{
@@ -341,7 +350,7 @@ class MyClass // extends CommonObject
 	 * Initialise object with example values
 	 * Id must be 0 if object instance is a specimen
 	 *
-	 * 	@return		void
+	 * @return void
 	 */
 	public function initAsSpecimen()
 	{

@@ -21,6 +21,8 @@
  * \ingroup mymodule
  * \brief   Custom Parsedown class to display inline images from the README.md in the about page
  */
+
+/** Includes */
 require __DIR__ . '/../vendor/autoload.php';
 
 /**
