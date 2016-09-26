@@ -41,6 +41,281 @@ include_once DOL_DOCUMENT_ROOT . "/core/modules/DolibarrModules.class.php";
  */
 class modMyModule extends DolibarrModules
 {
+	/** @var DoliDB Database handler */
+	public $db;
+
+	/**
+	 * @var int numero Module unique ID
+	 * @see http://wiki.dolibarr.org/index.php/List_of_modules_id Available ranges
+	 */
+	public $numero = 500000;
+
+	/** @var string Text key to reference module (for permissions, menus, etc.) */
+	public $rights_class = 'mymodule';
+
+	/**
+	 * @var string Module family.
+	 * Used to group modules in module setup page.
+	 * Can be one of 'crm', 'financial', 'hr', 'projects', 'products', 'ecm', 'technic', 'other'
+	 */
+	public $family = 'other';
+
+	/** @var int Module position in the family */
+	public $module_position = 500;
+
+    /** @var array Provide a custom family and options */
+    public $familyinfo = array(
+//        'myownfamily' => array(
+//            'position' => '001',
+//            'label' => 'MyOwnFamily'
+//        )
+    );
+
+	/** @var string Module name */
+	public $name = "My Module";
+
+	/** @var string Module short description */
+	public $description = "Description of module MyModule";
+
+	/** @var string Module long description */
+	public $descriptionlong = "A very long description. Can be a full HTML content";
+
+	/**
+	 * @var string Module editor name
+	 * @since 4.0
+	 */
+	public $editor_name = "My Company";
+
+	/**
+	 * @var string Module editor website
+	 * @since 4.0
+	 */
+	public $editor_url = "http://www.example.com";
+
+	/**
+	 * @var string Module version string
+     * Special values to hide the module behind MAIN_FEATURES_LEVEL: development, experimental
+	 * @see https://semver.org
+	 */
+	public $version = 'development';
+
+	/** @var string Key used in llx_const table to save module status enabled/disabled */
+	public $const_name = 'MAIN_MODULE_MYMODULE';
+
+	/**
+     * @var string Module logo
+     * Should be named object_mymodule.png and store under mymodule/img
+     */
+	public $picto = 'mymodule@mymodule';
+
+	/** @var array Define module parts */
+	public $module_parts = array(
+	    /** @var bool Module ships triggers in mymodule/core/triggers */
+		'triggers' => true,
+        /**
+         * @var bool Module ships login in mymodule/core/login
+         * @todo: example
+         */
+		'login' => false,
+        /**
+         * @var bool Module ships substitution functions
+         * @todo example
+         */
+		'substitutions' => false,
+        /**
+         * @var bool Module ships menu handlers
+         * @todo example
+         */
+		'menus' => false,
+        /**
+         * @var bool Module ships theme in mymodule/theme
+         * @todo example
+         */
+		'theme' => false,
+        /**
+         * @var bool Module shipped templates in mymodule/core/tpl overload core ones
+         * @todo example
+         */
+		'tpl' => false,
+        /**
+         * @var bool Module ships barcode functions
+         * @todo example
+         */
+		'barcode' => false,
+        /**
+         * @var bool Module ships models
+         * @todo example
+         */
+		'models' => false,
+        /** @var string[] List of module shipped custom CSS relative file paths */
+		'css' => array(
+			'mymodule/css/mycss.css.php'
+		),
+        /** @var string[] List of module shipped custom JavaScript relative file paths */
+		'js' => array(
+			'mymodule/js/myjs.js.php'
+		),
+        /**
+         * @var string[] List of hook contexts managed by the module
+         * @ todo example
+         */
+		'hooks' => array(),
+        /**
+         * @var array List of default directory names to force
+         * @todo example
+         */
+		'dir' => array(),
+        /**
+         * @var array List of workflow contexts managed by the module
+         */
+		'workflow' => array(),
+	);
+
+	/** @var string Data directories to create when module is enabled */
+	public $dirs = array(
+	    '/mymodule/temp'
+    );
+
+	/** @var array Configuration page declaration */
+	public $config_page_url = 'setup.php@mymodule';
+
+	/** @var bool Control module visibility */
+	public $hidden = false;
+
+	/** @var string[] List of class names of modules to enable when this one is enabled */
+	public $depends = array();
+
+	/** @var string[] List of class names of modules to disable when this one is disabled */
+	public $requiredby = array();
+
+	/** @var string List of class names of modules this module conflicts with */
+	public $conflictwith = array();
+
+	/** @var int[] Minimum PHP version required by this module */
+	public $phpmin = array(5, 3);
+
+	/** @var int[] Minimum Dolibarr version required by this module */
+	public $need_dolibarr_version = array(3, 2);
+
+	/** @var string[] List of language files */
+	public $langfiles = array('mymodule@mymodule');
+
+	/** @var array Indexed list of constants options */
+	public $const = array(
+	    0 => array(
+	        /** @var string Constant name */
+	        'MYMODULE_MYNEWCONST1',
+            /**
+             * @var string Constant type
+             * @todo Are there other types than 'chaine'?
+             */
+            'chaine',
+            /** @var string Constant initial value */
+            'myvalue',
+            /** @var string Constant description */
+            'This is a configuration constant',
+            /** @var bool Constant visibility */
+            true,
+            /**
+             * @var string Multi-company entities
+             * 'current' or 'allentities'
+             */
+            'current',
+            /** @var bool Delete constant when module is disabled */
+            true
+        )
+    );
+
+	/**
+     * @var string List of pages to add as tab in a specific view
+     * @todo example
+     */
+	public $tabs = array();
+
+	/**
+     * @var array Dictionaries declared by the module
+     *@todo example
+     */
+	public $dictionaries = array();
+
+	/** @var array Indexed list of boxes options */
+	public $boxes = array(
+		0 => array(
+			'file' => 'mybox@mymodule',
+			'note' => '',
+			'enabledbydefaulton' => 'Home'
+		)
+	);
+
+	/**
+     * @var array Indexed list of cronjobs options
+     * @todo: example
+     */
+	public $cronjobs = array();
+
+	/**
+     * @var array Indexed list of permissions options
+     * @todo example
+     */
+	public $rights = array();
+
+	/**
+     * @var array Indexed list of menu options
+     * @todo example
+     */
+	public $menu = array();
+
+	/**
+     * @var array Indexed list of export IDs
+     * @todo example
+     */
+	public $export_code = array();
+
+	/**
+     * @var array Indexed list of export names
+     * @todo example
+     */
+	public $export_label = array();
+
+	/**
+     * @var array Indexed list of export enabling conditions
+     * @todo example
+     */
+	public $export_enabled = array();
+
+	/**
+     * @var array Indexed list of export required permissions
+     * @todo example
+     */
+	public $export_permission = array();
+
+	/**
+     * @var array Indexed list of export fields
+     * @todo example
+     */
+	public $export_fields_array = array();
+
+	/**
+     * @var array Indexed list of export entities
+     * @todo example
+     */
+	public $export_entities_array = array();
+
+	/**
+     * @var array Indexed list of export SQL queries start
+     * @todo example
+     */
+	public $export_sql_start = array();
+
+	/**
+     * @var array Indexed list of export SQL queries end
+     * @todo example
+     */
+	public $export_sql_end = array();
+
+	/** @var bool Module only enabled / disabled in main company when multi-company is in use */
+	public $core_enabled = false;
+
 	// @codingStandardsIgnoreEnd
 	/**
 	 * Constructor. Define names, constants, directories, boxes, permissions
@@ -55,76 +330,26 @@ class modMyModule extends DolibarrModules
 		if (is_callable('parent::__construct')) {
 			parent::__construct($db);
 		} else {
+			global $db;
 			$this->db = $db;
 		}
 
-		// Id for module (must be unique).
-		// Use a free id here
-		// (See http://wiki.dolibarr.org/index.php/List_of_modules_id for available ranges).
-		$this->numero = 500000;
-		// Key text used to identify module (for permissions, menus, etc...)
-		$this->rights_class = 'mymodule';
-
-		// Family can be 'crm','financial','hr','projects','products','ecm','technic','other'
-		// It is used to group modules in module setup page
-		$this->family = "other";
-		// Module position in the family
-		$this->module_position = 500;
-		// Gives the possibility to the module, to provide his own family info and position of this family
-		// (Overwrite $this->family and $this->module_position. Avoid this)
+		// Declare custom family with translated label
 		//$this->familyinfo = array(
 		//	'myownfamily' => array(
 		//		'position' => '001',
 		//		'label' => $langs->trans("MyOwnFamily")
 		//	)
 		//);
-		// Module label (no space allowed)
-		// used if translation string 'ModuleXXXName' not found
-		// (where XXX is value of numeric property 'numero' of module)
-		$this->name = preg_replace('/^mod/i', '', get_class($this));
-		// Module description
-		// used if translation string 'ModuleXXXDesc' not found
-		// (where XXX is value of numeric property 'numero' of module)
-		$this->description = "Description of module MyModule";
-		$this->descriptionlong = "A very long description. Can be a full HTML content";
-		$this->editor_name = 'My Company';
-		$this->editor_url = 'http://www.example.com';
-		// Possible values for version are: 'development', 'experimental' or version
-		$this->version = 'development';
-		// Key used in llx_const table to save module status enabled/disabled
-		// (where MYMODULE is value of property name of module in uppercase)
-		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
-		// Name of image file used for this module.
-		// If file is in theme/yourtheme/img directory under name object_pictovalue.png
-		// use this->picto='pictovalue'
-		// If file is in module/img directory under name object_pictovalue.png
-		// use this->picto='pictovalue@module'
-		$this->picto = 'mymodule@mymodule'; // mypicto@mymodule
-		// Defined all module parts (triggers, login, substitutions, menus, css, etc...)
-		// for default path (eg: /mymodule/core/xxxxx) (0=disable, 1=enable)
-		// for specific path of parts (eg: /mymodule/core/modules/barcode)
-		// for specific css file (eg: /mymodule/css/mymodule.css.php)
-		$this->module_parts = array(
-			// Set this to 1 if module has its own trigger directory
-			'triggers' => 1,
-			// Set this to 1 if module has its own login method directory
-			//'login' => 0,
-			// Set this to 1 if module has its own substitution function file
-			//'substitutions' => 0,
-			// Set this to 1 if module has its own menus handler directory
-			//'menus' => 0,
-			// Set this to 1 if module has its own theme directory (theme)
-			// 'theme' => 0,
-			// Set this to 1 if module overwrite template dir (core/tpl)
-			// 'tpl' => 0,
-			// Set this to 1 if module has its own barcode directory
-			//'barcode' => 0,
-			// Set this to 1 if module has its own models directory
-			//'models' => 0,
-			// Set this to relative path of css if module has its own css file
-			'css' => array('mymodule/css/mycss.css.php'),
-			// Set this to relative path of js file if module must load a js on all pages
-			// 'js' => array('mymodule/js/mymodule.js'),
+
+		// Lazy automatic module naming from class names
+		//$this->name = preg_replace('/^mod/i', '', get_class($this));
+
+        // Lazy automatic constant naming from module name
+		//$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
+
+		// Examples for complex types
+        //$this->module_parts = array(
 			// Set here all hooks context managed by module
 			// 'hooks' => array('hookcontext1','hookcontext2'),
 			// To force the default directories names
@@ -141,65 +366,19 @@ class modMyModule extends DolibarrModules
 			//         'warning' => 'WarningTextTranslationKey',
 			//      ),
 			// ),
-		);
+		//);
 
-		// Data directories to create when module is enabled.
-		// Example: this->dirs = array("/mymodule/temp");
-		$this->dirs = array();
-
-		// Config pages. Put here list of php pages
-		// stored into mymodule/admin directory, used to setup module.
-		$this->config_page_url = array("setup.php@mymodule");
-
-		// Dependencies
-		// A condition to hide module
-		$this->hidden = false;
-		// List of module class names as string that must be enabled if this module is enabled
-		// Example : $this->depends('modAnotherModule', 'modYetAnotherModule')
-		$this->depends = array();
-		// List of module ids to disable if this one is disabled
-		$this->requiredby = array();
-		// List of module class names as string this module is in conflict with
-		$this->conflictwith = array();
-		// Minimum version of PHP required by module
-		$this->phpmin = array(5, 3);
-		// Minimum version of Dolibarr required by module
-		$this->need_dolibarr_version = array(3, 2);
-		// Language files list (langfiles@mymodule)
-		$this->langfiles = array("mymodule@mymodule");
-		// Constants
-		// List of particular constants to add when module is enabled
-		// (name, type ['chaine' or ?], value, description, visibility, entity ['current' or 'allentities'], delete on unactive)
-		// Example:
-		$this->const = array(
-			//	0 => array(
-			//		'MYMODULE_MYNEWCONST1',
-			//		'chaine',
-			//		'myvalue',
-			//		'This is a constant to add',
-			//		1,
-			//      'current',
-			//      0,
-			//	),
-			//	1 => array(
-			//		'MYMODULE_MYNEWCONST2',
-			//		'chaine',
-			//		'myvalue',
-			//		'This is another constant to add',
-			//		0,
-			//	)
-		);
 
 		// Array to add new pages in new tabs
 		// Example:
-		$this->tabs = array(
+		//$this->tabs = array(
 			//	// To add a new tab identified by code tabname1
 			//	'objecttype:+tabname1:Title1:langfile@mymodule:$user->rights->mymodule->read:/mymodule/mynewtab1.php?id=__ID__',
 			//	// To add another new tab identified by code tabname2
 			//	'objecttype:+tabname2:Title2:langfile@mymodule:$user->rights->othermodule->read:/mymodule/mynewtab2.php?id=__ID__',
 			//	// To remove an existing tab identified by code tabname
 			//	'objecttype:-tabname'
-		);
+		//);
 		// 'categories_x'	  to add a tab in category view (replace 'x' by type of category (0=product, 1=supplier, 2=customer, 3=member)
 		// 'contact'          to add a tab in contact view
 		// 'contract'         to add a tab in contract view
@@ -225,13 +404,11 @@ class modMyModule extends DolibarrModules
 			$conf->mymodule=new stdClass();
 			$conf->mymodule->enabled = 0;
 		}
-		$this->dictionaries = array();
+		//$this->dictionaries = array();
 		/* Example:
-		  // This is to avoid warnings
-		  if (! isset($conf->mymodule->enabled)) $conf->mymodule->enabled=0;
 		  $this->dictionaries=array(
 			  'langs'=>'mymodule@mymodule',
-			  // List of tables we want to see into dictonnary editor
+			  // List of tables we want to see into dictonary editor
 			  'tabname'=>array(
 				  MAIN_DB_PREFIX."table1",
 				  MAIN_DB_PREFIX."table2",
@@ -239,7 +416,7 @@ class modMyModule extends DolibarrModules
 			  ),
 			  // Label of tables
 			  'tablib'=>array("Table1","Table2","Table3"),
-			  // Request to select fields
+			  // Query to select fields
 			  'tabsql'=>array(
 				  'SELECT f.rowid as rowid, f.code, f.label, f.active'
 				  . ' FROM ' . MAIN_DB_PREFIX . 'table1 as f',
@@ -267,21 +444,9 @@ class modMyModule extends DolibarrModules
 		  );
 		 */
 
-		// Boxes
-		// Add here list of php file(s) stored in core/boxes that contains class to show a box.
-		$this->boxes = array(); // Boxes list
-		// Example:
-		$this->boxes = array(
-			0 => array(
-				'file' => 'mybox@mymodule',
-				'note' => '',
-				'enabledbydefaulton' => 'Home'
-			)
-		);
-
 		// Cronjobs
 		// List of cron jobs entries to add
-		$this->cronjobs = array();
+		//$this->cronjobs = array();
 		// Example:
 		//		$this->cronjobs = array(
 		//			0 => array(
@@ -309,9 +474,7 @@ class modMyModule extends DolibarrModules
 		//		);
 
 		// Permissions
-		$this->rights = array(); // Permission array used by this module
-		$r = 0;
-
+		//$r = 0;
 		// Add here list of permission defined by
 		// an id, a label, a boolean and two constant strings.
 		// Example:
@@ -330,8 +493,7 @@ class modMyModule extends DolibarrModules
 		//$r++;
 		// Main menu entries
 
-		// Add here entries to declare new menus
-		//
+		// Menu entries
 		// Example to declare a new Top Menu entry and its Left menu entry:
 		//$this->menu[]=array(
 		//	// Put 0 if this is a top menu
@@ -417,8 +579,7 @@ class modMyModule extends DolibarrModules
 		//);
 
 		// Exports
-		$r = 0;
-
+		//$r = 0;
 		// Example:
 		//$this->export_code[$r]=$this->rights_class.'_'.$r;
 		//// Translation key (used only if key ExportDataset_xxx_z not found)
@@ -508,9 +669,6 @@ class modMyModule extends DolibarrModules
 		//$this->export_sql_end[$r] .= ' WHERE f.fk_soc = s.rowid '
 		//	. 'AND f.rowid = fd.fk_facture';
 		//$r++;
-
-		// Can be enabled / disabled only in the main company when multi-company is in use
-		// $this->core_enabled = 1;
 	}
 
 	/**
