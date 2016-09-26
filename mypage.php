@@ -17,10 +17,11 @@
  */
 
 /**
- *	\file		mypage.php
- *	\ingroup	mymodule
- *	\brief		This file is an example php page
- *				Put some comments here
+ * \file    mypage.php
+ * \ingroup mymodule
+ * \brief   Example PHP page.
+ *
+ * Put detailed description here.
  */
 
 //if (! defined('NOREQUIREUSER'))	define('NOREQUIREUSER','1');

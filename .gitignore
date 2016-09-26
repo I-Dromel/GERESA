@@ -1,8 +1,8 @@
 # Generated binaries
 /build/*.zip
 # Doxygen generated documentation
-/build/html
 /build/doxygen/doxygen_warnings.log
+/doc/code/html
 # Composer managed dependencies
 /vendor
 /dev/bin

@@ -17,10 +17,11 @@
  */
 
 /**
- * 	\file		class/myclass.class.php
- * 	\ingroup	mymodule
- * 	\brief		This file is an example CRUD class file (Create/Read/Update/Delete)
- * 				Put some comments here
+ * \file    class/myclass.class.php
+ * \ingroup mymodule
+ * \brief   Example CRUD (Create/Read/Update/Delete) class.
+ *
+ * Put detailed description here.
  */
 // Put here all includes required by your class file
 //require_once DOL_DOCUMENT_ROOT."/core/class/commonobject.class.php";

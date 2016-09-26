@@ -19,8 +19,9 @@
 /**
  * \file    class/actions_mymodule.class.php
  * \ingroup mymodule
- * \brief   This file is an example hook overload class file
- *          Put some comments here
+ * \brief   Example hook overload.
+ *
+ * Put detailed description here.
  */
 
 /**

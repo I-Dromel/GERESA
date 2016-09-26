@@ -16,6 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file    test/functional/MyModuleFunctionalTest.php
+ * \ingroup mymodule
+ * \brief   Example Selenium test.
+ *
+ * Put detailed description here.
+ */
+
 namespace test\functional;
 
 use PHPUnit_Extensions_Selenium2TestCase_WebDriverException;

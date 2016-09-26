@@ -17,10 +17,11 @@
  */
 
 /**
- *	\file		lib/mymodule.lib.php
- *	\ingroup	mymodule
- *	\brief		This file is an example module library
- *				Put some comments here
+ * \file    lib/mymodule.lib.php
+ * \ingroup mymodule
+ * \brief   Example module library.
+ *
+ * Put detailed description here.
  */
 
 function mymoduleAdminPrepareHead()

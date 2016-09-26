@@ -17,10 +17,11 @@
  */
 
 /**
- *	\file		css/mycss.css.php
- *	\ingroup	mymodule
- *	\brief		This file is an example css file
- *				Put some comments here
+ * \file    css/mycss.css.php
+ * \ingroup mymodule
+ * \brief   Example CSS.
+ *
+ * Put detailed description here.
  */
 
 header('Content-Type: text/css');

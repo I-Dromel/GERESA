@@ -68,20 +68,27 @@ Run PHPunit tests.
 ### test_functional
 Run Selenium tests.
 
-### TODO: dev_doc
-Builds Doxygen developer documentation.
+### doc
+Build project documentation.
+
+### doc_dev
+Build Doxygen developer documentation.  
+Requires [Doxygen](http://www.doxygen.org/).
+
+### TODO: doc_user
+Build Sphinx user documentation.
 
 ### release
 Release a module.
-Runs all checks and tests, remove dev dependencies, builds a zip ready to be published and restores dev dependencies.
+Run all checks and tests, remove dev dependencies, builds a zip ready to be published and restores dev dependencies.
 
 ### build
 Builds a module ZIP.  
 Requires Perl.
 
 ### tx*
-Manages transifex.  
-Requires the ```tx``` client.
+Manages Transifex.  
+Requires the [transifex client](http://docs.transifex.com/client/).
 
 ### git_hooks_*
 Installs or remove the [provided](dev/git-hooks) GIT hooks.

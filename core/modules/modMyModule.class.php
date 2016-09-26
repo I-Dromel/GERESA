@@ -17,12 +17,20 @@
  */
 
 /**
- * 	\defgroup	mymodule	MyModule module
- * 	\brief		MyModule module descriptor.
- * 	\file		core/modules/modMyModule.class.php
- * 	\ingroup	mymodule
- * 	\brief		Description and activation file for module MyModule
+ * \defgroup    mymodule    MyModule module
+ * \brief       MyModule module descriptor.
+ *
+ * Put detailed description here.
  */
+
+/**
+ * \file        core/modules/modMyModule.class.php
+ * \ingroup     mymodule
+ * \brief       Example module description and activation file.
+ *
+ * Put detailed description here.
+ */
+
 include_once DOL_DOCUMENT_ROOT . "/core/modules/DolibarrModules.class.php";
 
 // The class name should start with a lower case mod for Dolibarr to pick it up

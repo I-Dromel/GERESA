@@ -16,6 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file    test/unit/MyClassTest.php
+ * \ingroup mymodule
+ * \brief   Example PHPUnit test.
+ *
+ * Put detailed description here.
+ */
+
 namespace test\unit;
 
 /**

@@ -17,10 +17,11 @@
  */
 
 /**
- * 	\file		admin/about.php
- * 	\ingroup	mymodule
- * 	\brief		This file is an example about page
- * 				Put some comments here
+ * \file    admin/about.php
+ * \ingroup mymodule
+ * \brief   Example about page.
+ *
+ * Put detailed description here.
  */
 
 // Load Dolibarr environment

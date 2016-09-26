@@ -18,10 +18,11 @@
  */
 
 /**
- *	\file		scripts/myscript.php
- *	\ingroup	mymodule
- *	\brief		This file is an example command line script
- *				Put some comments here
+ * \file    scripts/myscript.php
+ * \ingroup mymodule
+ * \brief   Example command line script.
+ *
+ * Put detailed description here.
  */
 
 $sapi_type = php_sapi_name();

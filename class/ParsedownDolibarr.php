@@ -16,6 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file    class/ParsedownDolibarr.php
+ * \ingroup mymodule
+ * \brief   Custom Parsedown class to display inline images from the README.md in the about page
+ */
 require __DIR__ . '/../vendor/autoload.php';
 
 /**

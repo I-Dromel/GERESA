@@ -65,6 +65,12 @@
     "git_pre_push": [
       "@test",
       "@tx_push"
-    ]
+    ],
+    "doc": [
+      "@doc_dev",
+      "@doc_user"
+    ],
+    "doc_dev": "cd build/doxygen; doxygen mymodule.doxyfile",
+    "doc_user": ""
   }
 }

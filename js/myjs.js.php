@@ -16,4 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * \file    js/myjs.js.php
+ * \ingroup mymodule
+ * \brief   Example JavaScript.
+ *
+ * Put detailed description here.
+ */
+
 header('Content-Type: application/javascript');
