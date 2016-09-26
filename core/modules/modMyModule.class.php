@@ -63,13 +63,13 @@ class modMyModule extends DolibarrModules
 	/** @var int Module position in the family */
 	public $module_position = 500;
 
-    /** @var array Provide a custom family and options */
-    public $familyinfo = array(
+	/** @var array Provide a custom family and options */
+	public $familyinfo = array(
 //        'myownfamily' => array(
 //            'position' => '001',
 //            'label' => 'MyOwnFamily'
 //        )
-    );
+	);
 
 	/** @var string Module name */
 	public $name = "My Module";
@@ -94,7 +94,7 @@ class modMyModule extends DolibarrModules
 
 	/**
 	 * @var string Module version string
-     * Special values to hide the module behind MAIN_FEATURES_LEVEL: development, experimental
+	 * Special values to hide the module behind MAIN_FEATURES_LEVEL: development, experimental
 	 * @see https://semver.org
 	 */
 	public $version = 'development';
@@ -103,78 +103,78 @@ class modMyModule extends DolibarrModules
 	public $const_name = 'MAIN_MODULE_MYMODULE';
 
 	/**
-     * @var string Module logo
-     * Should be named object_mymodule.png and store under mymodule/img
-     */
+	 * @var string Module logo
+	 * Should be named object_mymodule.png and store under mymodule/img
+	 */
 	public $picto = 'mymodule@mymodule';
 
 	/** @var array Define module parts */
 	public $module_parts = array(
-	    /** @var bool Module ships triggers in mymodule/core/triggers */
+		/** @var bool Module ships triggers in mymodule/core/triggers */
 		'triggers' => true,
-        /**
-         * @var bool Module ships login in mymodule/core/login
-         * @todo: example
-         */
+		/**
+		 * @var bool Module ships login in mymodule/core/login
+		 * @todo: example
+		 */
 		'login' => false,
-        /**
-         * @var bool Module ships substitution functions
-         * @todo example
-         */
+		/**
+		 * @var bool Module ships substitution functions
+		 * @todo example
+		 */
 		'substitutions' => false,
-        /**
-         * @var bool Module ships menu handlers
-         * @todo example
-         */
+		/**
+		 * @var bool Module ships menu handlers
+		 * @todo example
+		 */
 		'menus' => false,
-        /**
-         * @var bool Module ships theme in mymodule/theme
-         * @todo example
-         */
+		/**
+		 * @var bool Module ships theme in mymodule/theme
+		 * @todo example
+		 */
 		'theme' => false,
-        /**
-         * @var bool Module shipped templates in mymodule/core/tpl overload core ones
-         * @todo example
-         */
+		/**
+		 * @var bool Module shipped templates in mymodule/core/tpl overload core ones
+		 * @todo example
+		 */
 		'tpl' => false,
-        /**
-         * @var bool Module ships barcode functions
-         * @todo example
-         */
+		/**
+		 * @var bool Module ships barcode functions
+		 * @todo example
+		 */
 		'barcode' => false,
-        /**
-         * @var bool Module ships models
-         * @todo example
-         */
+		/**
+		 * @var bool Module ships models
+		 * @todo example
+		 */
 		'models' => false,
-        /** @var string[] List of module shipped custom CSS relative file paths */
+		/** @var string[] List of module shipped custom CSS relative file paths */
 		'css' => array(
 			'mymodule/css/mycss.css.php'
 		),
-        /** @var string[] List of module shipped custom JavaScript relative file paths */
+		/** @var string[] List of module shipped custom JavaScript relative file paths */
 		'js' => array(
 			'mymodule/js/myjs.js.php'
 		),
-        /**
-         * @var string[] List of hook contexts managed by the module
-         * @ todo example
-         */
+		/**
+		 * @var string[] List of hook contexts managed by the module
+		 * @ todo example
+		 */
 		'hooks' => array(),
-        /**
-         * @var array List of default directory names to force
-         * @todo example
-         */
+		/**
+		 * @var array List of default directory names to force
+		 * @todo example
+		 */
 		'dir' => array(),
-        /**
-         * @var array List of workflow contexts managed by the module
-         */
+		/**
+		 * @var array List of workflow contexts managed by the module
+		 */
 		'workflow' => array(),
 	);
 
 	/** @var string Data directories to create when module is enabled */
 	public $dirs = array(
-	    '/mymodule/temp'
-    );
+		'/mymodule/temp'
+	);
 
 	/** @var array Configuration page declaration */
 	public $config_page_url = 'setup.php@mymodule';
@@ -202,40 +202,40 @@ class modMyModule extends DolibarrModules
 
 	/** @var array Indexed list of constants options */
 	public $const = array(
-	    0 => array(
-	        /** @var string Constant name */
-	        'MYMODULE_MYNEWCONST1',
-            /**
-             * @var string Constant type
-             * @todo Are there other types than 'chaine'?
-             */
-            'chaine',
-            /** @var string Constant initial value */
-            'myvalue',
-            /** @var string Constant description */
-            'This is a configuration constant',
-            /** @var bool Constant visibility */
-            true,
-            /**
-             * @var string Multi-company entities
-             * 'current' or 'allentities'
-             */
-            'current',
-            /** @var bool Delete constant when module is disabled */
-            true
-        )
-    );
+		0 => array(
+			/** @var string Constant name */
+			'MYMODULE_MYNEWCONST1',
+			/**
+			 * @var string Constant type
+			 * @todo Are there other types than 'chaine'?
+			 */
+			'chaine',
+			/** @var string Constant initial value */
+			'myvalue',
+			/** @var string Constant description */
+			'This is a configuration constant',
+			/** @var bool Constant visibility */
+			true,
+			/**
+			 * @var string Multi-company entities
+			 * 'current' or 'allentities'
+			 */
+			'current',
+			/** @var bool Delete constant when module is disabled */
+			true
+		)
+	);
 
 	/**
-     * @var string List of pages to add as tab in a specific view
-     * @todo example
-     */
+	 * @var string List of pages to add as tab in a specific view
+	 * @todo example
+	 */
 	public $tabs = array();
 
 	/**
-     * @var array Dictionaries declared by the module
-     *@todo example
-     */
+	 * @var array Dictionaries declared by the module
+	 *@todo example
+	 */
 	public $dictionaries = array();
 
 	/** @var array Indexed list of boxes options */
@@ -248,69 +248,69 @@ class modMyModule extends DolibarrModules
 	);
 
 	/**
-     * @var array Indexed list of cronjobs options
-     * @todo: example
-     */
+	 * @var array Indexed list of cronjobs options
+	 * @todo: example
+	 */
 	public $cronjobs = array();
 
 	/**
-     * @var array Indexed list of permissions options
-     * @todo example
-     */
+	 * @var array Indexed list of permissions options
+	 * @todo example
+	 */
 	public $rights = array();
 
 	/**
-     * @var array Indexed list of menu options
-     * @todo example
-     */
+	 * @var array Indexed list of menu options
+	 * @todo example
+	 */
 	public $menu = array();
 
 	/**
-     * @var array Indexed list of export IDs
-     * @todo example
-     */
+	 * @var array Indexed list of export IDs
+	 * @todo example
+	 */
 	public $export_code = array();
 
 	/**
-     * @var array Indexed list of export names
-     * @todo example
-     */
+	 * @var array Indexed list of export names
+	 * @todo example
+	 */
 	public $export_label = array();
 
 	/**
-     * @var array Indexed list of export enabling conditions
-     * @todo example
-     */
+	 * @var array Indexed list of export enabling conditions
+	 * @todo example
+	 */
 	public $export_enabled = array();
 
 	/**
-     * @var array Indexed list of export required permissions
-     * @todo example
-     */
+	 * @var array Indexed list of export required permissions
+	 * @todo example
+	 */
 	public $export_permission = array();
 
 	/**
-     * @var array Indexed list of export fields
-     * @todo example
-     */
+	 * @var array Indexed list of export fields
+	 * @todo example
+	 */
 	public $export_fields_array = array();
 
 	/**
-     * @var array Indexed list of export entities
-     * @todo example
-     */
+	 * @var array Indexed list of export entities
+	 * @todo example
+	 */
 	public $export_entities_array = array();
 
 	/**
-     * @var array Indexed list of export SQL queries start
-     * @todo example
-     */
+	 * @var array Indexed list of export SQL queries start
+	 * @todo example
+	 */
 	public $export_sql_start = array();
 
 	/**
-     * @var array Indexed list of export SQL queries end
-     * @todo example
-     */
+	 * @var array Indexed list of export SQL queries end
+	 * @todo example
+	 */
 	public $export_sql_end = array();
 
 	/** @var bool Module only enabled / disabled in main company when multi-company is in use */
@@ -345,11 +345,11 @@ class modMyModule extends DolibarrModules
 		// Lazy automatic module naming from class names
 		//$this->name = preg_replace('/^mod/i', '', get_class($this));
 
-        // Lazy automatic constant naming from module name
+		// Lazy automatic constant naming from module name
 		//$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
 
 		// Examples for complex types
-        //$this->module_parts = array(
+		//$this->module_parts = array(
 			// Set here all hooks context managed by module
 			// 'hooks' => array('hookcontext1','hookcontext2'),
 			// To force the default directories names
