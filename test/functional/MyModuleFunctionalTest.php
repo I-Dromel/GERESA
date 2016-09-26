@@ -18,6 +18,8 @@
 
 namespace test\functional;
 
+use PHPUnit_Extensions_Selenium2TestCase_WebDriverException;
+
 /**
  * Class MyModuleFunctionalTest
  *
@@ -47,6 +49,7 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
             'desiredCapabilities' => array()
         ),
         // Geckodriver does not keep the session at the moment?!
+        // XPath selectors also don't seem to work
 //        array(
 //            'browser' => 'Mozilla Firefox on Linux',
 //            'browserName' => 'firefox',
@@ -99,30 +102,32 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
-     * Test Dolibarr login
+     * Handle Dolibarr authentication
      */
-    public function testLogin()
+    private function authenticate()
     {
-        $this->url('/');
-        $login = $this->byId('username');
-        $login->clear();
-        $login->value('admin');
-        $password = $this->byId('password');
-        $password->clear();
-        $password->value('admin');
-        $this->byId('login')->submit();
-        //return $this->assertContains('/index.php?mainmenu=home', $this->url(), "URL is Dolibarr homepage");
+        try {
+            if ($this->byId('login')) {
+                $login = $this->byId('username');
+                $login->clear();
+                $login->value('admin');
+                $password = $this->byId('password');
+                $password->clear();
+                $password->value('admin');
+                $this->byId('login')->submit();
+            }
+        } catch (PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
+            // Login does not exist. Assume we are already authenticated
+        }
     }
 
     /**
      * Test enabling developer mode
-     *
-     * @depends testLogin
      */
     public function testEnableDeveloperMode()
     {
-        $this->byHref('admin/index.php')->click();
-        $this->byHref('admin/const.php')->click();
+        $this->url('/admin/const.php');
+        $this->authenticate();
         $main_features_level_path='//input[@value="MAIN_FEATURES_LEVEL"]/following::input[@type="text"]';
         $main_features_level = $this->byXPath($main_features_level_path);
         $main_features_level->clear();
@@ -140,7 +145,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testModuleEnabled()
     {
-        $this->byHref('admin/modules.php')->click();
+        $this->url('/admin/modules.php');
+        $this->authenticate();
         $module_status_image_path='//a[contains(@href, "' . self::$module_id . '")]/img';
         $module_status_image = $this->byXPath($module_status_image_path);
         if (strstr($module_status_image->attribute('src'), 'switch_off.png')) {
@@ -162,7 +168,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testConfigurationPage()
     {
-        $this->byHref('mymodule/admin/setup.php')->click();
+        $this->url('/custom/mymodule/admin/setup.php');
+        $this->authenticate();
         return $this->assertContains('mymodule/admin/setup.php', $this->url(), 'Configuration page');
     }
 
@@ -171,7 +178,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testAboutPage()
     {
-        $this->byHref('mymodule/admin/about.php')->click();
+        $this->url('/custom/mymodule/admin/about.php');
+        $this->authenticate();
         return $this->assertContains('mymodule/admin/about.php', $this->url(), 'About page');
     }
 
@@ -180,6 +188,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testAboutPageRendersMarkdownReadme()
     {
+        $this->url('/custom/mymodule/admin/about.php');
+        $this->authenticate();
         return $this->assertEquals(
             'Dolibarr Module Template (aka My Module)',
             $this->byTag('h1')->text(),
@@ -192,7 +202,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testBoxDeclared()
     {
-        $this->byHref('admin/boxes.php')->click();
+        $this->url('/admin/boxes.php');
+        $this->authenticate();
         return $this->assertContains('mybox', $this->source(), "Box enabled");
     }
 
@@ -201,9 +212,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testTriggerDeclared()
     {
-        $this->byHref('admin/tools/index.php')->click();
-        $this->byHref('admin/system/dolibarr.php')->click();
-        $this->byHref('admin/triggers.php')->click();
+        $this->url('/admin/triggers.php');
+        $this->authenticate();
         return $this->assertContains(
             'interface_99_modMyModule_MyTrigger.class.php',
             $this->byTag('body')->text(),
@@ -216,6 +226,8 @@ class MyModuleFunctionalTest extends \PHPUnit_Extensions_Selenium2TestCase
      */
     public function testTriggerEnabled()
     {
+        $this->url('/admin/triggers.php');
+        $this->authenticate();
         return $this->assertContains(
             'tick.png',
             $this
