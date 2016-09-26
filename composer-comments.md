@@ -68,36 +68,54 @@ Run PHPunit tests.
 ### test_functional
 Run Selenium tests.
 
-### doc
-Build project documentation.
-
-### doc_dev
-Builds Doxygen and PHPdoc.  
-Modify to select your favorite.
-
-### doc_dev_doxygen
-Build Doxygen developer documentation.  
-Requires [Doxygen](http://www.doxygen.org/).
-
-### doc_dev_phpdoc
-
-### TODO: doc_user
-Build Sphinx user documentation.
-
 ### release
 Release a module.
 Run all checks and tests, remove dev dependencies, builds a zip ready to be published and restores dev dependencies.
 
 ### build
-Builds a module ZIP.  
+Build a module ZIP.  
 Requires Perl.
 
 ### tx*
-Manages Transifex.  
+Manage Transifex.  
 Requires the [transifex client](http://docs.transifex.com/client/).
 
 ### git_hooks_*
-Installs or remove the [provided](dev/git-hooks) GIT hooks.
+Install or remove the [provided](dev/git-hooks) GIT hooks.
 
 ### git*
 Provided GIT hooks callbacks.
+
+### doc
+Build project documentation.
+
+### doc_dev
+Build Doxygen and PHPdoc.  
+Modify to select your favorite.
+
+### doc_dev_doxygen
+Build [Doxygen](http://www.doxygen.org/) developer documentation.  
+Requires Doxygen.
+
+### doc_dev_phpdoc
+Build [phpDocumentor](https://www.phpdoc.org/) developer documentation.
+
+### doc_user
+Build [Sphinx](http://www.sphinx-doc.org/) user documentation (all formats).  
+Requires Sphinx.
+
+### doc_user_html
+Build HTML user documentation.
+
+### doc_user_pdf
+Build PDF user documentation.  
+Requires LaTeX.
+
+### doc_user_epub
+Build epub user documentation.
+
+### read_doc_dev
+Launch default browser and display phpDocumentor HTML.
+
+### read_doc_user
+Launch default browser and display HTML Sphinx documentation.

@@ -77,6 +77,15 @@
     ],
     "doc_dev_doxygen": "cd build/doxygen; doxygen mymodule.doxyfile",
     "doc_dev_phpdoc": "phpdoc",
-    "doc_user": ""
+    "doc_user": [
+      "@doc_user_html",
+      "@doc_user_pdf",
+      "@doc_user_epub"
+    ],
+    "doc_user_html": "cd doc/user; make html",
+    "doc_user_pdf": "cd doc/user; make latexpdf",
+    "doc_user_epub": "cd doc/user; make epub",
+    "read_doc_dev": "xdg-open doc/code/phpdoc/index.html",
+    "read_doc_user": "xdg-open doc/user/build/html/index.html"
   }
 }

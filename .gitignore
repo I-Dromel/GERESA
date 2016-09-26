@@ -9,3 +9,5 @@
 # PHPdocumentor generated files
 /build/phpdoc
 /doc/code/phpdoc
+# Sphinx generated files
+/doc/user/build
