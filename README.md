@@ -125,6 +125,10 @@ Some work has still to be done manually:
     - String referencing the template
 - Remove the features you don't plan to use
 - Fill the copyright notices at the top of each file
+- Starti a new GIT history 
+```
+git checkout --orphan [new_branch_name]
+```
 - Build an awesome module ;)
 
 ### Composer scripts
