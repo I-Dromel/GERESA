@@ -125,6 +125,7 @@ Some work still has to be done manually:
     - String referencing the template
 - Remove the features you don't plan to use
 - Fill the copyright notices at the top of each file
+- Add your logo: see [images README](dev/img/README.md) for specifications
 - Start a new GIT history 
 ```
 git checkout --orphan [new_branch_name]
