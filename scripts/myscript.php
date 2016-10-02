@@ -57,6 +57,8 @@ require_once $path . '../../../master.inc.php';
  * Warning: this still requires a valid htdocs/conf.php file
  */
 
+global $conf, $db, $langs, $mysoc, $user;
+
 // No timeout for this script
 @set_time_limit(0);
 

@@ -83,7 +83,7 @@ Require this repository from Dolibarr's composer:
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/gpcsolutions/dolibarr-module-template",
+      "url": "https://github.com/gpcsolutions/dolibarr-module-template"
     }
   ],
   "require": {

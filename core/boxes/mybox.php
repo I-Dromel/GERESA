@@ -88,9 +88,10 @@ class MyBox extends ModeleBoxes
 		$langs->load("boxes");
 		$langs->load('mymodule@mymodule');
 
+		parent::__construct($db, $param);
+
 		$this->boxlabel = $langs->transnoentitiesnoconv("MyBox");
 
-		$this->db = $db;
 		$this->param = $param;
 	}
 

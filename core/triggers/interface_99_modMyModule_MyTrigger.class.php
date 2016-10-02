@@ -133,7 +133,7 @@ class InterfaceMytrigger extends MyTrigger
 	 * is inside directory core/triggers
 	 *
 	 * @param string $action Event action code
-	 * @param Object $object Object
+	 * @param CommonObject $object Object
 	 * @param User $user Object user
 	 * @param Translate $langs Object langs
 	 * @param Conf $conf Object conf

@@ -62,7 +62,7 @@ $action = GETPOST('action', 'alpha');
 $myparam = GETPOST('myparam', 'alpha');
 
 // Access control
-if ($user->societe_id > 0) {
+if ($user->socid > 0) {
 	// External user
 	accessforbidden();
 }
@@ -114,10 +114,11 @@ $form = new Form($db);
 // Example 1: Adding jquery code
 echo '<script type=application/javascript" language="javascript">
 	jQuery(document).ready(function() {
-		public function init_myfunc()
+		function init_myfunc()
 		{
-			jQuery("#myid").removeAttr(\'disabled\');
-			jQuery("#myid").attr(\'disabled\',\'disabled\');
+			jQuery("#myid")
+			.removeAttr(\'disabled\')
+			.attr(\'disabled\',\'disabled\');
 		}
 		init_myfunc();
 		jQuery("#mybutton").click(function() {
