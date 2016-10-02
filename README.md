@@ -92,6 +92,11 @@ Require this repository from Dolibarr's composer:
 }
 ```
 
+Run
+```sh
+composer update
+```
+
 Follow the [final steps](#final_steps).
 
 ### <a name="final_steps"></a>Final steps
