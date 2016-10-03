@@ -32,73 +32,73 @@ namespace test\unit;
  */
 class MyClassTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Global test setup
-     */
-    public static function setUpBeforeClass()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-    }
+	/**
+	 * Global test setup
+	 */
+	public static function setUpBeforeClass()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+	}
 
-    /**
-     * Unit test setup
-     */
-    protected function setUp()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-    }
+	/**
+	 * Unit test setup
+	 */
+	protected function setUp()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+	}
 
-    /**
-     * Verify pre conditions
-     */
-    protected function assertPreConditions()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-    }
+	/**
+	 * Verify pre conditions
+	 */
+	protected function assertPreConditions()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+	}
 
-    /**
-     * A sample test
-     */
-    public function testSomething()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-        // TODO: test something
-        $this->assertTrue(true);
-    }
+	/**
+	 * A sample test
+	 */
+	public function testSomething()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+		// TODO: test something
+		$this->assertTrue(true);
+	}
 
-    /**
-     * Verify post conditions
-     */
-    protected function assertPostConditions()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-    }
+	/**
+	 * Verify post conditions
+	 */
+	protected function assertPostConditions()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+	}
 
-    /**
-     * Unit test teardown
-     */
-    protected function tearDown()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-    }
+	/**
+	 * Unit test teardown
+	 */
+	protected function tearDown()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+	}
 
-    /**
-     * Global test teardown
-     */
-    public static function tearDownAfterClass()
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-    }
+	/**
+	 * Global test teardown
+	 */
+	public static function tearDownAfterClass()
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+	}
 
-    /**
-     * Unsuccessful test
-     *
-     * @param \Exception $e
-     * @throws \Exception
-     */
-    protected function onNotSuccessfulTest(\Exception $e)
-    {
-        fwrite(STDOUT, __METHOD__ . "\n");
-        throw $e;
-    }
+	/**
+	 * Unsuccessful test
+	 *
+	 * @param \Exception $e
+	 * @throws \Exception
+	 */
+	protected function onNotSuccessfulTest(\Exception $e)
+	{
+		fwrite(STDOUT, __METHOD__ . "\n");
+		throw $e;
+	}
 }
