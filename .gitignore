@@ -11,3 +11,5 @@
 /doc/code/phpdoc
 # Sphinx generated files
 /doc/user/build
+/.settings/
+/.buildpath
