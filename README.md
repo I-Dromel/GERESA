@@ -162,7 +162,7 @@ Build code and user documentation.
 #### Release
 
 Run the checks and tests then build a distribution ZIP.
-```
+```sh
 composer release
 ```
 
@@ -173,12 +173,12 @@ These are just wrappers calling composer scripts.
 They ensure best practices are followed during module development.  
 
 Install:
-```
+```sh
 composer git_hooks_install
 ```
 
 Remove:
-```
+```sh
 composer git_hooks_remove
 ```
 
