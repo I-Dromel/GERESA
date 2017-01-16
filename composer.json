@@ -1,15 +1,15 @@
 {
-  "name": "gpcsolutions/mymodule",
+  "name": "dolibarr/mymodule",
   "type": "dolibarr-module",
   "description": "A Dolibarr module template",
   "keywords": [
     "dolibarr",
     "template"
   ],
-  "homepage": "https://github.com/gpcsolutions/dolibarr-module-template",
+  "homepage": "https://github.com/Dolibarr/dolibarr-module-template",
   "license": "GPL-3.0+",
   "support": {
-    "issues": "https://github.com/gpcsolutions/dolibarr-module-template/issues"
+    "issues": "https://github.com/Dolibarr/dolibarr-module-template/issues"
   },
   "config": {
     "process-timeout": 3600,
