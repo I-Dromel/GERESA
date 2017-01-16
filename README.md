@@ -66,7 +66,7 @@ Install
 
 *(You may have to create the ```htdocs/custom``` directory first if it doesn't exist yet.)*
 ```sh
-git clone git@github.com:GPCsolutions/dolibarr-module-template.git mymodule
+git clone git@github.com:Dolibarr/dolibarr-module-template.git mymodule
 ```
 
 - Install [Composer](https://getcomposer.org) dependencies:
@@ -83,11 +83,11 @@ Require this repository from Dolibarr's composer:
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/gpcsolutions/dolibarr-module-template"
+      "url": "https://github.com/dolibarr/dolibarr-module-template"
     }
   ],
   "require": {
-    "gpcsolutions/mymodule": "dev-master"
+    "dolibarr/mymodule": "dev-master"
   }
 }
 ```
@@ -190,7 +190,7 @@ Check the dedicated [README](dev/dolistore/README.md) for more informations.
 Contributions
 -------------
 
-Feel free to contribute and report defects on our [issue tracker](http://github.com/GPCsolutions/dolibarr-module-template/issues).
+Feel free to contribute and report defects on our [issue tracker](http://github.com/Dolibarr/dolibarr-module-template/issues).
 
 Licenses
 --------
