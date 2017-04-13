@@ -66,7 +66,7 @@ $head = mymoduleAdminPrepareHead();
 dol_fiche_head(
 	$head,
 	'settings',
-	$langs->trans("Module500017Name"),
+	$langs->trans("Module500000Name"),
 	0,
 	"geresa@geresa"
 );

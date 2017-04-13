@@ -359,3 +359,5 @@ class MyClass // extends CommonObject
 		$this->prop2 = 'prop2';
 	}
 }
+
+?>

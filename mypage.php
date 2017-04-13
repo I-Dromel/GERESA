@@ -51,10 +51,10 @@ if (false === (@include '../../main.inc.php')) {  // From htdocs directory
 
 global $db, $langs, $user;
 
-dol_include_once('/mymodule/class/myclass.class.php');
+dol_include_once('/geresa/class/myclass.class.php');
 
 // Load translation files required by the page
-$langs->load("mymodule@mymodule");
+$langs->load("geresa/langs/fr_FR");
 
 // Get parameters
 $id = GETPOST('id', 'int');
@@ -105,8 +105,9 @@ if ($action == 'add') {
  *
  * Put here all code to build page
  */
+echo 'HELLO WORLD ! ';
 
-llxHeader('', $langs->trans('MyPageName'), '');
+llxHeader('', $langs->trans('PAGE DE BASE'), '');
 
 $form = new Form($db);
 
@@ -133,3 +134,5 @@ $somethingshown = $form->showLinkedObjectBlock($myobject);
 
 // End of page
 llxFooter();
+
+?>
