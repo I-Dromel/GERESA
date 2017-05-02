@@ -89,6 +89,10 @@ class modGeresa extends DolibarrModules
 		//                        );
 		$this->module_parts = array();
 
+		// FORCER LE MENU GERESA
+
+		
+
 		// Data directories to create when module is enabled.
 		// Example: this->dirs = array("/mymodule/temp");
 		$this->dirs = array();
@@ -110,7 +114,18 @@ class modGeresa extends DolibarrModules
 		// Example: $this->const=array(0=>array('MYMODULE_MYNEWCONST1','chaine','myvalue','This is a constant to add',1),
 		//                             1=>array('MYMODULE_MYNEWCONST2','chaine','myvalue','This is another constant to add',0, 'current', 1)
 		// );
-		$this->const = array();
+		$this->const = array(
+			0=>array('GERESA_JOUR','chaine','0','Constante test ',1));
+		
+
+
+
+
+
+		/*1=>array('MAIN_MENU_STANDARD_FORCED','chaine','monmenu.php','Force menu handler to this value',1,'current',1),
+		2=>array('MAIN_MENUFRONT_STANDARD_FORCED','chaine','monmenu.php','Force menu handler to this value',1,'current',1),
+		3=>array('MAIN_MENU_SMARTPHONE_FORCED','chaine','monmenu.php','Force menu handler to this value',1,'current',1),
+		4=>array('MAIN_MENUFRONT_SMARTPHONE_FORCED','chaine','monmenu.php','Force menu handler to this value',1,'current',1));*/
 
 		// Array to add new pages in new tabs
 		// Example: $this->tabs = array('objecttype:+tabname1:Title1:mylangfile@mymodule:$user->rights->mymodule->read:/mymodule/mynewtab1.php?id=__ID__',  	// To add a new tab identified by code tabname1
@@ -188,49 +203,33 @@ class modGeresa extends DolibarrModules
 									'titre'=>'Geresa Module',
 									'mainmenu'=>'geresa',
 									'leftmenu'=>'geresa_l',
-		  							'url'=>'/geresa/core/page1.php?mainmenu=geresa&leftmenu=geresa_l',
+		  							'url'=>'/geresa/core/index.php?mainmenu=geresa&leftmenu=geresa_l',
 									'langs'=>'geresa/langs/fr_FR',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 									'position'=>100,
 									'enabled'=>'1',	// Define condition to show or hide menu entry. Use '$conf->mymodule->enabled' if entry must be visible if module is enabled.
 									'perms'=>'',			                // Use 'perms'=>'$user->rights->mymodule->level1->level2' if you want your menu with a permission rules
 									'target'=>'',
 									'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
+
 		$r++;
-		//
-		// Example to declare a Left Menu entry into an existing Top menu entry:
-		$this->menu[$r]=array(	'fk_menu'=>'fk_mainmenu=geresa',		    // Use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-									'type'=>'left',			                // This is a Left menu entry
-									'titre'=>'Sous menu 1 ',
-									'mainmenu'=>'geresa',
-									'leftmenu'=>'geresa_l',
-									'url'=>'/geresa/index.php',
-									'langs'=>'geresa/langs/fr_FR',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-									'position'=>100,
-									'enabled'=>'1',  // Define condition to show or hide menu entry. Use '$conf->mymodule->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-									'perms'=>'1',			                // Use 'perms'=>'$user->rights->mymodule->level1->level2' if you want your menu with a permission rules
-									'target'=>'',
-									'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
-
-		 $r++;
-
-		 $this->menu[$r]=array(	'fk_menu'=>'fk_mainmenu=geresa','fk_leftmenu=geresa_l',		    // Use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-									'type'=>'left',			                // This is a Left menu entry  
-									'titre'=>'Sous menu 2  ',
-									'mainmenu'=>'',
-									'leftmenu'=>'',
-									'url'=>'/geresa/index.php',
-									'langs'=>'geresa/langs/fr_FR',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-									'position'=>101,
-									'enabled'=>'1',  // Define condition to show or hide menu entry. Use '$conf->mymodule->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-									'perms'=>'1',			                // Use 'perms'=>'$user->rights->mymodule->level1->level2' if you want your menu with a permission rules
-									'target'=>'',
-									'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
-
+		$this->menu[$r]=array(	'fk_menu'=>'fk_mainmenu=products,fk_leftmenu=cat',
+					'type'=>'left',
+					'titre'=>'Famille_geresa',
+					'mainmenu'=>'',
+					'leftmenu'=>'',
+					'url'=>'/geresa/admin/admin.php', 
+					'langs'=>'factory@factory',
+					'position'=>110,
+					'enabled'=>'1',
+					'perms'=>'1',
+					'target'=>'',
+					'user'=>2);
+		
 
 
 
 		// Exports
-		$r=1;
+		$r=0;
 
 		// Example:
 		// $this->export_code[$r]=$this->rights_class.'_'.$r;
@@ -255,14 +254,19 @@ class modGeresa extends DolibarrModules
      *      @param      string	$options    Options when enabling module ('', 'noboxes')
 	 *      @return     int             	1 if OK, 0 if KO
 	 */
-	function init($options='')
-	{
-		$sql = array();
+	function init()
+    {
+        $sql = array();
 
-		$result=$this->_load_tables('/mymodule/sql/');
+        $result=$this->load_tables();
 
-		return $this->_init($sql, $options);
-	}
+        return $this->_init($sql);
+    }
+
+	function load_tables()
+    {
+        return $this->_load_tables('/geresa/sql/');
+    }
 
 	/**
 	 *		Function called when module is disabled.
